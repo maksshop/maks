@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Add animation classes to elements
-    const animateElements = document.querySelectorAll('.grid.md\\:grid-cols-3 > div, .grid.md\\:grid-cols-4 > div, .grid.md\\:grid-cols-2 > div');
+    // Add animation classes to elements (exclude promotion images)
+    const animateElements = document.querySelectorAll('.grid.md\\:grid-cols-3 > div, .grid.md\\:grid-cols-4 > div:not(.enlarge-image), .grid.md\\:grid-cols-2 > div');
     animateElements.forEach(element => {
         element.classList.add('opacity-0', 'transform', 'translate-y-8', 'transition-all', 'duration-700');
         observer.observe(element);
@@ -232,4 +232,63 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         }
     });
+
+    // Image enlargement functionality for promotion section
+    const enlargeImageElements = document.querySelectorAll('.enlarge-image');
+    enlargeImageElements.forEach(element => {
+        element.addEventListener('click', function() {
+            const imageSrc = this.getAttribute('data-image');
+            enlargeImageFunction(imageSrc);
+        });
+    });
+
+    // Image enlargement function
+    function enlargeImageFunction(imageSrc) {
+        // Create modal overlay
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        };
+
+        // Create enlarged image container
+        const imageContainer = document.createElement('div');
+        imageContainer.className = 'relative max-w-4xl max-h-screen p-4';
+
+        // Create enlarged image
+        const enlargedImage = document.createElement('img');
+        enlargedImage.src = imageSrc;
+        enlargedImage.className = 'w-full h-auto max-h-screen object-contain rounded-lg';
+        enlargedImage.alt = 'Enlarged promotional image';
+        enlargedImage.addEventListener('load', function() {
+            enlargedImage.classList.add('loaded');
+        });
+        if (enlargedImage.complete) {
+            enlargedImage.classList.add('loaded');
+        }
+
+        // Create close button
+        const closeButton = document.createElement('button');
+        closeButton.innerHTML = '<i class="fas fa-times text-white text-2xl"></i>';
+        closeButton.className = 'absolute top-2 right-2 bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300';
+        closeButton.onclick = function() {
+            modal.remove();
+        };
+
+        // Assemble modal
+        imageContainer.appendChild(enlargedImage);
+        imageContainer.appendChild(closeButton);
+        modal.appendChild(imageContainer);
+        document.body.appendChild(modal);
+
+        // Add keyboard support for closing
+        document.addEventListener('keydown', function closeOnEscape(e) {
+            if (e.key === 'Escape') {
+                modal.remove();
+                document.removeEventListener('keydown', closeOnEscape);
+            }
+        });
+    };
 });
