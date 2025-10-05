@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperMax - Your Premium Supermarket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'supermax-red': '#DC2626',
+                        'supermax-red-light': '#EF4444',
+                        'supermax-red-dark': '#B91C1C',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-supermax-red">SuperMax</h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-supermax-red transition duration-300">Home</a>
+                    <a href="#features" class="text-gray-700 hover:text-supermax-red transition duration-300">Features</a>
+                    <a href="#products" class="text-gray-700 hover:text-supermax-red transition duration-300">Products</a>
+                    <a href="#about" class="text-gray-700 hover:text-supermax-red transition duration-300">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-supermax-red transition duration-300">Contact</a>
+                    <button class="bg-supermax-red text-white px-6 py-2 rounded-full hover:bg-supermax-red-dark transition duration-300">
+                        Shop Now
+                    </button>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-supermax-red">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">Home</a>
+                <a href="#features" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">Features</a>
+                <a href="#products" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">Products</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">About</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">Contact</a>
+                <button class="w-full text-left bg-supermax-red text-white px-3 py-2 rounded hover:bg-supermax-red-dark">
+                    Shop Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-16 bg-gradient-to-br from-white to-red-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div>
+                        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                            Fresh Quality,
+                            <span class="text-supermax-red">Every Day</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 mt-6">
+                            Discover SuperMax - your one-stop destination for premium groceries, fresh produce,
+                            and exceptional customer service. Quality you can trust, prices you can afford.
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-supermax-red text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-supermax-red-dark transition duration-300 transform hover:scale-105">
+                            Start Shopping
+                        </button>
+                        <button class="border-2 border-supermax-red text-supermax-red px-8 py-4 rounded-full text-lg font-semibold hover:bg-supermax-red hover:text-white transition duration-300">
+                            Learn More
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-8 pt-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-supermax-red">10K+</div>
+                            <div class="text-sm text-gray-600">Happy Customers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-supermax-red">500+</div>
+                            <div class="text-sm text-gray-600">Products</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-supermax-red">24/7</div>
+                            <div class="text-sm text-gray-600">Support</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-supermax-red rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                             alt="Fresh groceries"
+                             class="w-full h-96 object-cover rounded-2xl shadow-2xl">
+                    </div>
+                    <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
+                        <i class="fas fa-star text-supermax-red text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Why Choose SuperMax?</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    We combine quality, convenience, and exceptional service to make your shopping experience unforgettable.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 bg-red-50 rounded-2xl hover:shadow-xl transition duration-300">
+                    <div class="bg-supermax-red w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-leaf text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Fresh & Organic</h3>
+                    <p class="text-gray-600">
+                        All our products are sourced directly from local farms and organic suppliers,
+                        ensuring maximum freshness and nutritional value.
+                    </p>
+                </div>
+                <div class="text-center p-8 bg-red-50 rounded-2xl hover:shadow-xl transition duration-300">
+                    <div class="bg-supermax-red w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-truck text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Fast Delivery</h3>
+                    <p class="text-gray-600">
+                        Same-day delivery available in most areas. Our efficient logistics
+                        ensure your groceries arrive fresh and on time.
+                    </p>
+                </div>
+                <div class="text-center p-8 bg-red-50 rounded-2xl hover:shadow-xl transition duration-300">
+                    <div class="bg-supermax-red w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Quality Guarantee</h3>
+                    <p class="text-gray-600">
+                        100% satisfaction guarantee on all products. If you're not happy,
+                        we'll make it right with our no-questions-asked return policy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Products</h2>
+                <p class="text-xl text-gray-600">Discover our most popular and fresh items</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                         alt="Organic Vegetables"
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Organic Vegetables</h3>
+                        <p class="text-gray-600 mb-4">Fresh, locally sourced organic produce</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-supermax-red">$24.99</span>
+                            <button class="bg-supermax-red text-white px-4 py-2 rounded-full hover:bg-supermax-red-dark transition duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                         alt="Fresh Fruits"
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Premium Fruits</h3>
+                        <p class="text-gray-600 mb-4">Seasonal fruits picked at peak ripeness</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-supermax-red">$19.99</span>
+                            <button class="bg-supermax-red text-white px-4 py-2 rounded-full hover:bg-supermax-red-dark transition duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1556909114-4c36e03c7c48?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                         alt="Dairy Products"
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Dairy Selection</h3>
+                        <p class="text-gray-600 mb-4">Farm-fresh milk, cheese, and yogurt</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-supermax-red">$15.99</span>
+                            <button class="bg-supermax-red text-white px-4 py-2 rounded-full hover:bg-supermax-red-dark transition duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                         alt="Bakery Items"
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Artisan Bakery</h3>
+                        <p class="text-gray-600 mb-4">Freshly baked bread and pastries daily</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-supermax-red">$12.99</span>
+                            <button class="bg-supermax-red text-white px-4 py-2 rounded-full hover:bg-supermax-red-dark transition duration-300">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">About SuperMax</h2>
+                    <p class="text-gray-600 mb-6">
+                        Founded in 2010, SuperMax has been serving communities with the finest quality groceries
+                        and exceptional customer service. Our commitment to freshness, sustainability, and customer
+                        satisfaction has made us the preferred choice for thousands of families.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        We partner with local farmers and suppliers to bring you the best products at competitive
+                        prices. Every item in our store is carefully selected to meet our high standards of quality
+                        and nutrition.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-supermax-red mb-2">2010</div>
+                            <div class="text-gray-600">Founded</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-supermax-red mb-2">15+</div>
+                            <div class="text-gray-600">Locations</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-supermax-red mb-2">500+</div>
+                            <div class="text-gray-600">Products</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-supermax-red mb-2">50K+</div>
+                            <div class="text-gray-600">Customers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                         alt="SuperMax Store"
+                         class="w-full h-96 object-cover rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-supermax-red text-white p-6 rounded-2xl shadow-lg">
+                        <div class="text-2xl font-bold">15 Years</div>
+                        <div class="text-sm">of Excellence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-600">Have questions? We're here to help!</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="bg-supermax-red p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Address</div>
+                                <div class="text-gray-600">123 Grocery Street, Food City, FC 12345</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-supermax-red p-3 rounded-full mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Phone</div>
+                                <div class="text-gray-600">(555) 123-GROCERY</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-supermax-red p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Email</div>
+                                <div class="text-gray-600">hello@supermax.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-supermax-red p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-900">Hours</div>
+                                <div class="text-gray-600">Mon-Sun: 8AM - 10PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-supermax-red focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-supermax-red focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-supermax-red focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-supermax-red focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-supermax-red text-white py-3 px-6 rounded-lg font-semibold hover:bg-supermax-red-dark transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-supermax-red mb-4">SuperMax</h3>
+                    <p class="text-gray-400 mb-4">
+                        Your trusted partner for quality groceries and exceptional service.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-supermax-red transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-supermax-red transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-supermax-red transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-supermax-red transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-supermax-red transition duration-300">Home</a></li>
+                        <li><a href="#features" class="hover:text-supermax-red transition duration-300">Features</a></li>
+                        <li><a href="#products" class="hover:text-supermax-red transition duration-300">Products</a></li>
+                        <li><a href="#about" class="hover:text-supermax-red transition duration-300">About</a></li>
+                        <li><a href="#contact" class="hover:text-supermax-red transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-supermax-red transition duration-300">Fresh Produce</a></li>
+                        <li><a href="#" class="hover:text-supermax-red transition duration-300">Dairy & Eggs</a></li>
+                        <li><a href="#" class="hover:text-supermax-red transition duration-300">Bakery</a></li>
+                        <li><a href="#" class="hover:text-supermax-red transition duration-300">Beverages</a></li>
+                        <li><a href="#" class="hover:text-supermax-red transition duration-300">Pantry Staples</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">
+                        Subscribe to get updates on new products and special offers.
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:ring-2 focus:ring-supermax-red focus:border-transparent">
+                        <button class="bg-supermax-red px-4 py-2 rounded-r-lg hover:bg-supermax-red-dark transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 SuperMax. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
