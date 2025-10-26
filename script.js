@@ -108,29 +108,27 @@ document.addEventListener('DOMContentLoaded', function() {
         return emailRegex.test(email);
     }
 
-    // Navbar background change on scroll
+    // Navbar sticky behavior on scroll
     const navbar = document.querySelector('nav');
     let lastScrollTop = 0;
+    let isScrolling = false;
 
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (scrollTop > lastScrollTop) {
-            // Scrolling down
-            navbar.style.transform = 'translateY(-100%)';
+        
+        // Always keep navbar visible (sticky behavior)
+        navbar.style.transform = 'translateY(0)';
+        
+        // Add enhanced background effect when scrolled
+        if (scrollTop > 50) {
+            navbar.classList.add('bg-white', 'bg-opacity-95', 'backdrop-blur-md', 'shadow-xl');
+            navbar.classList.remove('shadow-lg');
         } else {
-            // Scrolling up
-            navbar.style.transform = 'translateY(0)';
+            navbar.classList.remove('bg-white', 'bg-opacity-95', 'backdrop-blur-md', 'shadow-xl');
+            navbar.classList.add('shadow-lg');
         }
 
         lastScrollTop = scrollTop;
-
-        // Add background blur effect when scrolled
-        if (scrollTop > 100) {
-            navbar.classList.add('bg-white', 'bg-opacity-95', 'backdrop-blur-sm');
-        } else {
-            navbar.classList.remove('bg-white', 'bg-opacity-95', 'backdrop-blur-sm');
-        }
     });
 
     // Add loading animation for images
@@ -260,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create enlarged image
         const enlargedImage = document.createElement('img');
         enlargedImage.src = imageSrc;
-        enlargedImage.className = 'w-full h-auto max-h-screen object-contain rounded-lg';
+        enlargedImage.className = 'w-full h-auto max-h-screen object-contain rounded-lg cursor-pointer';
         enlargedImage.alt = 'Enlarged promotional image';
         enlargedImage.addEventListener('load', function() {
             enlargedImage.classList.add('loaded');
@@ -268,6 +266,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (enlargedImage.complete) {
             enlargedImage.classList.add('loaded');
         }
+        
+        // Add click to close functionality to the image itself
+        enlargedImage.addEventListener('click', function() {
+            modal.remove();
+        });
 
         // Create close button
         const closeButton = document.createElement('button');
@@ -291,4 +294,46 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     };
+
+    // Phone Number Click Enhancement
+    const phoneNumberLink = document.querySelector('a[href^="tel:"]');
+    
+    if (phoneNumberLink) {
+        phoneNumberLink.addEventListener('click', function(e) {
+            // Add ripple effect to the phone number button
+            const phoneButton = this.querySelector('div');
+            const ripple = document.createElement('span');
+            const rect = phoneButton.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(220, 38, 38, 0.2);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            `;
+
+            phoneButton.style.position = 'relative';
+            phoneButton.style.overflow = 'hidden';
+            phoneButton.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+
+            // Optional: Add a small delay to show the ripple effect before calling
+            setTimeout(() => {
+                // The phone call will be initiated by the href="tel:" attribute
+                console.log('Initiating phone call to delivery service');
+            }, 300);
+        });
+    }
 });

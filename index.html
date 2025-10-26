@@ -3,7 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Супермаркет Макс - премиум супермаркет с качествени хранителни продукти, бърза доставка до кв. Драгалевци и кв. Симеоново, София. Специални промоции, свежи продукти и изключително обслужване.">
+    <meta name="keywords" content="супермаркет, София, Драгалевци, Симеоново, доставка, храна, промоции, качествени продукти, Младост, Дружба, Сухата река">
+    <meta name="author" content="Супермаркет Макс">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Супермаркет Макс - Вашият премиум супермаркет">
+    <meta property="og:description" content="Премиум супермаркет с качествени хранителни продукти и бърза доставка до кв. Драгалевци и кв. Симеоново, София.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://supermarketmaks.com">
+    <meta property="og:image" content="https://supermarketmaks.com/img/van.jpg">
+    <meta property="og:locale" content="bg_BG">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Супермаркет Макс - Вашият премиум супермаркет">
+    <meta name="twitter:description" content="Премиум супермаркет с качествени хранителни продукти и бърза доставка до кв. Драгалевци и кв. Симеоново, София.">
+    <meta name="twitter:image" content="https://supermarketmaks.com/img/van.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "GroceryStore",
+        "name": "Супермаркет Макс",
+        "description": "Премиум супермаркет с качествени хранителни продукти и бърза доставка",
+        "url": "https://supermarketmaks.com",
+        "telephone": "0885-559-710",
+        "email": "makstanchevi@abv.bg",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Захари Зограф 53",
+            "addressLocality": "София",
+            "addressCountry": "BG"
+        },
+        "openingHours": "Mo-Su 00:00-24:00",
+        "priceRange": "$$",
+        "paymentAccepted": "Cash, Credit Card",
+        "currenciesAccepted": "BGN"
+    }
+    </script>
+    
     <title>Супермаркет Макс - Вашият премиум супермаркет</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="canonical" href="https://supermarketmaks.com">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,7 +67,7 @@
 </head>
 <body class="bg-white text-gray-900">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full z-50">
+    <nav class="bg-white shadow-lg fixed w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -45,45 +90,45 @@
             </div>
         </div>
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">Начало</a>
-                <a href="#features" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">Промоции</a>
-                <a href="#products" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">Магазини</a>
-                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">За нас</a>
-                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-supermax-red">Контакти</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#home" class="block px-3 py-3 text-gray-700 hover:text-supermax-red hover:bg-gray-50 rounded-lg transition duration-300 font-medium">Начало</a>
+                <a href="#features" class="block px-3 py-3 text-gray-700 hover:text-supermax-red hover:bg-gray-50 rounded-lg transition duration-300 font-medium">Промоции</a>
+                <a href="#products" class="block px-3 py-3 text-gray-700 hover:text-supermax-red hover:bg-gray-50 rounded-lg transition duration-300 font-medium">Магазини</a>
+                <a href="#about" class="block px-3 py-3 text-gray-700 hover:text-supermax-red hover:bg-gray-50 rounded-lg transition duration-300 font-medium">За нас</a>
+                <a href="#contact" class="block px-3 py-3 text-gray-700 hover:text-supermax-red hover:bg-gray-50 rounded-lg transition duration-300 font-medium">Контакти</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="pt-16 bg-gradient-to-br from-white to-red-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid md:grid-cols-2 gap-6 items-center">
+                <div class="space-y-4">
                     <div>
-                        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-                            Топ качество,
-                            <span class="text-supermax-red">всеки ден</span>
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-supermax-red leading-tight">
+                            Доставка до кв.Драгалевци кв.Симеоново
                         </h1>
-                        <p class="text-xl text-gray-600 mt-6">
-                            и изключително обслужване на клиентите. Качество, на което можете да се доверите, цени, които можете да си позволите.
+                        <p class="text-base sm:text-lg md:text-xl text-gray-900 mt-3">
+                            Бърза и надеждна доставка на свежи хранителни продукти до вашия дом. Поръчайте по телефон и получите всичко необходимо за вашата трапеза с удобство и качество.
                         </p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#features" class="bg-supermax-red text-white px-8 py-4 rounded-full text-lg font-semibold text-center hover:bg-supermax-red-dark transition duration-300 transform hover:scale-105">
-                            Разгледайте нашата брошура с намалени цени
+                        <a href="tel:0882498493" class="bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold text-center hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                            <i class="fas fa-phone mr-2"></i>
+                            0882 498 493
                         </a>
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="bg-supermax-red rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition duration-500">
-                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                             alt="Свежи хранителни продукти"
-                             class="w-full h-96 object-cover rounded-2xl shadow-2xl">
+                    <div class="bg-supermax-red rounded-3xl p-4 sm:p-6 md:p-8 transform rotate-3 hover:rotate-0 transition duration-500">
+                        <img src="img/van.jpg"
+                             alt="Малък европейски камион за доставка на храна до кв. Драгалевци и кв. Симеоново"
+                             class="w-full h-48 sm:h-56 md:h-64 object-cover rounded-2xl shadow-2xl">
                     </div>
-                    <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
-                        <i class="fas fa-star text-supermax-red text-2xl"></i>
+                    <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-white rounded-full p-2 sm:p-4 shadow-lg">
+                        <i class="fas fa-truck text-supermax-red text-lg sm:text-2xl"></i>
                     </div>
                 </div>
             </div>
@@ -94,19 +139,19 @@
     <section id="features" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Специални промоции</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-supermax-red mb-4">Специални промоции</h2>
+                <p class="text-lg sm:text-xl text-gray-900 max-w-2xl mx-auto">
                     Не пропускайте нашите страхотни оферти и ексклузивни предложения, предназначени да ви спестят пари за качествени продукти.
                 </p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
                 <div class="cursor-pointer enlarge-image" data-image="img/prom01.JPG" aria-label="Отвори Промоция 1">
                     <div class="relative rounded-3xl overflow-hidden shadow-lg bg-white group">
                         <span class="absolute top-4 left-4 bg-supermax-red text-white text-xs font-bold px-3 py-1 rounded-full shadow">Промоция</span>
-                        <img src="img/prom01.JPG" alt="Промоция 1" loading="lazy" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <img src="img/prom01.JPG" alt="Специални промоции и намаления в Супермаркет Макс - Промоция 1" loading="lazy" class="w-full h-64 sm:h-72 lg:h-80 object-cover transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                             <div class="flex items-center justify-between text-white">
-                                <h3 class="text-lg font-semibold">Промоция 1</h3>
+                                
                                 <span class="inline-flex items-center gap-2 text-sm font-medium opacity-90 group-hover:opacity-100">
                                     Виж оферта <i class="fas fa-search-plus"></i>
                                 </span>
@@ -117,10 +162,10 @@
                 <div class="cursor-pointer enlarge-image" data-image="img/prom02.JPG" aria-label="Отвори Промоция 2">
                     <div class="relative rounded-3xl overflow-hidden shadow-lg bg-white group">
                         <span class="absolute top-4 left-4 bg-supermax-red text-white text-xs font-bold px-3 py-1 rounded-full shadow">Промоция</span>
-                        <img src="img/prom02.JPG" alt="Промоция 2" loading="lazy" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <img src="img/prom02.JPG" alt="Специални промоции и намаления в Супермаркет Макс - Промоция 2" loading="lazy" class="w-full h-64 sm:h-72 lg:h-80 object-cover transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                             <div class="flex items-center justify-between text-white">
-                                <h3 class="text-lg font-semibold">Промоция 2</h3>
+                                
                                 <span class="inline-flex items-center gap-2 text-sm font-medium opacity-90 group-hover:opacity-100">
                                     Виж оферта <i class="fas fa-search-plus"></i>
                                 </span>
@@ -131,10 +176,10 @@
                 <div class="cursor-pointer enlarge-image" data-image="img/prom03.JPG" aria-label="Отвори Промоция 3">
                     <div class="relative rounded-3xl overflow-hidden shadow-lg bg-white group">
                         <span class="absolute top-4 left-4 bg-supermax-red text-white text-xs font-bold px-3 py-1 rounded-full shadow">Промоция</span>
-                        <img src="img/prom03.JPG" alt="Промоция 3" loading="lazy" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <img src="img/prom03.JPG" alt="Специални промоции и намаления в Супермаркет Макс - Промоция 3" loading="lazy" class="w-full h-64 sm:h-72 lg:h-80 object-cover transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                             <div class="flex items-center justify-between text-white">
-                                <h3 class="text-lg font-semibold">Промоция 3</h3>
+                                
                                 <span class="inline-flex items-center gap-2 text-sm font-medium opacity-90 group-hover:opacity-100">
                                     Виж оферта <i class="fas fa-search-plus"></i>
                                 </span>
@@ -145,10 +190,10 @@
                 <div class="cursor-pointer enlarge-image" data-image="img/prom04.JPG" aria-label="Отвори Промоция 4">
                     <div class="relative rounded-3xl overflow-hidden shadow-lg bg-white group">
                         <span class="absolute top-4 left-4 bg-supermax-red text-white text-xs font-bold px-3 py-1 rounded-full shadow">Промоция</span>
-                        <img src="img/prom04.JPG" alt="Промоция 4" loading="lazy" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105">
+                        <img src="img/prom04.JPG" alt="Специални промоции и намаления в Супермаркет Макс - Промоция 4" loading="lazy" class="w-full h-64 sm:h-72 lg:h-80 object-cover transition-transform duration-500 group-hover:scale-105">
                         <div class="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
                             <div class="flex items-center justify-between text-white">
-                                <h3 class="text-lg font-semibold">Промоция 4</h3>
+                                
                                 <span class="inline-flex items-center gap-2 text-sm font-medium opacity-90 group-hover:opacity-100">
                                     Виж оферта <i class="fas fa-search-plus"></i>
                                 </span>
@@ -164,48 +209,48 @@
     <section id="products" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Нашите магазини</h2>
-                <p class="text-xl text-gray-600">Открийте най-удобната за вас локация на Супермаркет Макс</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-supermax-red mb-4">Нашите магазини</h2>
+                <p class="text-lg sm:text-xl text-gray-900">Открийте най-удобната за вас локация на Супермаркет Макс</p>
             </div>
-            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1579113800036-3b821502c635?auto=format&fit=crop&w=800&q=80" alt="Супермаркет Макс Център" loading="lazy" class="w-full h-48 object-cover">
-                    <div class="p-8 space-y-3 text-gray-600">
-                        <h3 class="text-2xl font-semibold text-supermax-red">Супермаркет Макс Център</h3>
-                        <p><strong>Адрес:</strong> ул. "Главна" 12, Център, София</p>
-                        <p><strong>Телефон:</strong> +359 2 123 4567</p>
-                        <p><strong>Имейл:</strong> center@supermarketmaks.bg</p>
-                        <p><strong>Работно време:</strong> Пон-Пет 08:00-22:00, Съб-Нед 09:00-21:00</p>
+                    <img src="img/dragalevci.jpg" alt="Супермаркет Макс - Драгалевци, ул. Захари Зограф 53, София" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3 text-gray-900">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-supermax-red">Супермаркет Макс - Драгалевци</h3>
+                        <p class="text-base"><strong>Адрес:</strong> ул. Захари Зограф 53 (срещу хотел Перла), София</p>
+                        <p class="text-base"><strong>Телефон:</strong> 0885-559-710</p>
+                        <p class="text-base"><strong>Имейл:</strong> makstanchevi@abv.bg</p>
+                        <p class="text-base"><strong>Работно време:</strong> Понеделник-Неделя 00:00-24:00, Денонощно</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1599454100981-72933a7852a4?auto=format&fit=crop&w=800&q=80" alt="Супермаркет Макс Север" loading="lazy" class="w-full h-48 object-cover">
-                    <div class="p-8 space-y-3 text-gray-600">
-                        <h3 class="text-2xl font-semibold text-supermax-red">Супермаркет Макс Север</h3>
-                        <p><strong>Адрес:</strong> бул. "Свобода" 45, кв. Надежда, София</p>
-                        <p><strong>Телефон:</strong> +359 2 765 4321</p>
-                        <p><strong>Имейл:</strong> north@supermarketmaks.bg</p>
-                        <p><strong>Работно време:</strong> Пон-Нед 08:00-23:00</p>
+                    <img src="img/mladost.jpg" alt="Супермаркет Макс - Младост, кв. Младост 2, ул. Проф. Д.р Васил Златарски, София" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3 text-gray-900">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-supermax-red">Супермаркет Макс - Младост</h3>
+                        <p class="text-base"><strong>Адрес:</strong> кв. Младост 2, ул. Проф. Д.р Васил Златарски (до бл. 222), София</p>
+                        <p class="text-base"><strong>Телефон:</strong> 0885-326-275</p>
+                        <p class="text-base"><strong>Имейл:</strong> makstanchevi@abv.bg</p>
+                        <p class="text-base"><strong>Работно време:</strong> Понеделник-Неделя 08:30-21:30</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80" alt="Супермаркет Макс Пловдив" loading="lazy" class="w-full h-48 object-cover">
-                    <div class="p-8 space-y-3 text-gray-600">
-                        <h3 class="text-2xl font-semibold text-supermax-red">Супермаркет Макс Пловдив</h3>
-                        <p><strong>Адрес:</strong> ул. "Марица" 7, Централен, Пловдив</p>
-                        <p><strong>Телефон:</strong> +359 32 555 888</p>
-                        <p><strong>Имейл:</strong> plovdiv@supermarketmaks.bg</p>
-                        <p><strong>Работно време:</strong> Пон-Пет 07:30-21:30, Съб-Нед 08:30-21:00</p>
+                    <img src="img/drujba.jpg" alt="Супермаркет Макс - Дружба, кв. Дружба 1, ул. Тирана, София" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3 text-gray-900">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-supermax-red">Супермаркет Макс - Дружба</h3>
+                        <p class="text-base"><strong>Адрес:</strong> кв. Дружба 1, ул. Тирана (до бл. 45), гр. София</p>
+                        <p class="text-base"><strong>Телефон:</strong> 0885-326-243</p>
+                        <p class="text-base"><strong>Имейл:</strong> makstanchevi@abv.bg</p>
+                        <p class="text-base"><strong>Работно време:</strong> Понеделник-Неделя 00:00-24:00, Денонощно</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                    <img src="https://images.unsplash.com/photo-1567696153744-c6b84c7a3465?auto=format&fit=crop&w=800&q=80" alt="Супермаркет Макс Варна" loading="lazy" class="w-full h-48 object-cover">
-                    <div class="p-8 space-y-3 text-gray-600">
-                        <h3 class="text-2xl font-semibold text-supermax-red">Супермаркет Макс Варна</h3>
-                        <p><strong>Адрес:</strong> бул. "Приморски" 102, Морска градина, Варна</p>
-                        <p><strong>Телефон:</strong> +359 52 909 333</p>
-                        <p><strong>Имейл:</strong> varna@supermarketmaks.bg</p>
-                        <p><strong>Работно време:</strong> Пон-Нед 08:00-22:00</p>
+                    <img src="img/suha.jpg" alt="Супермаркет Макс - Сухата река, кв. Сухата река, ул. Тодорини кукли, София" loading="lazy" class="w-full h-48 object-cover">
+                    <div class="p-6 space-y-3 text-gray-900">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-supermax-red">Супермаркет Макс - Сухата река</h3>
+                        <p class="text-base"><strong>Адрес:</strong> кв. Сухата река, ул. Тодорини кукли (бл. 1)</p>
+                        <p class="text-base"><strong>Телефон:</strong> GSM 0885-326-28</p>
+                        <p class="text-base"><strong>Имейл:</strong> makstanchevi@abv.bg</p>
+                        <p class="text-base"><strong>Работно време:</strong> Понеделник-Неделя 00:00-24:00, Денонощно</p>
                     </div>
                 </div>
             </div>
@@ -217,13 +262,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <h2 class="text-4xl font-bold text-gray-900 mb-6">За Супермаркет Макс</h2>
-                    <p class="text-gray-600 mb-6">
+                    <h2 class="text-4xl font-bold text-supermax-red mb-6">За Супермаркет Макс</h2>
+                    <p class="text-gray-900 mb-6">
                         Основана през 2010 г., Супермаркет Макс обслужва общностите с най-качествените хранителни продукти
                         и изключително обслужване на клиентите. Нашият ангажимент към свежестта, устойчивостта и удовлетвореността на клиентите
                         ни направи предпочитания избор за хиляди семейства.
                     </p>
-                    <p class="text-gray-600 mb-8">
+                    <p class="text-gray-900 mb-8">
                         Ние си партнираме с местни фермери и доставчици, за да ви донесем най-добрите продукти на конкурентни
                         цени. Всеки артикул в нашия магазин е внимателно подбран, за да отговаря на високите ни стандарти за качество
                         и хранене.
@@ -231,25 +276,25 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div class="text-center">
                             <div class="text-3xl font-bold text-supermax-red mb-2">2010</div>
-                            <div class="text-gray-600">Основана</div>
+                            <div class="text-gray-900">Основана</div>
                         </div>
                         <div class="text-center">
                             <div class="text-3xl font-bold text-supermax-red mb-2">15+</div>
-                            <div class="text-gray-600">Локации</div>
+                            <div class="text-gray-900">Локации</div>
                         </div>
                         <div class="text-center">
                             <div class="text-3xl font-bold text-supermax-red mb-2">500+</div>
-                            <div class="text-gray-600">Продукти</div>
+                            <div class="text-gray-900">Продукти</div>
                         </div>
                         <div class="text-center">
                             <div class="text-3xl font-bold text-supermax-red mb-2">50K+</div>
-                            <div class="text-gray-600">Клиенти</div>
+                            <div class="text-gray-900">Клиенти</div>
                         </div>
                     </div>
                 </div>
                 <div class="relative">
                     <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                         alt="Магазин Супермаркет Макс"
+                         alt="Супермаркет Макс - Магазин с качествени хранителни продукти и изключително обслужване"
                          class="w-full h-96 object-cover rounded-2xl shadow-2xl">
                     <div class="absolute -bottom-6 -left-6 bg-supermax-red text-white p-6 rounded-2xl shadow-lg">
                         <div class="text-2xl font-bold">15 години</div>
@@ -260,12 +305,92 @@
         </div>
     </section>
 
+    <!-- Ресторант Макс Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-supermax-red mb-4">Ресторант Макс</h2>
+                <p class="text-xl text-supermax-red">Премиум ресторант с изключителна кухня и атмосфера</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-3xl font-bold text-supermax-red mb-4">Насладете се на най-добрите ястия</h3>
+                        <p class="text-lg text-gray-900 mb-6">
+                            Приготвени от нашите майстори готвачи с любов и внимание към детайла. 
+                            Използваме само най-свежите продукти и традиционни рецепти.
+                        </p>
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="flex items-center text-supermax-red">
+                                <i class="fas fa-star text-lg mr-1"></i>
+                                <i class="fas fa-star text-lg mr-1"></i>
+                                <i class="fas fa-star text-lg mr-1"></i>
+                                <i class="fas fa-star text-lg mr-1"></i>
+                                <i class="fas fa-star text-lg mr-1"></i>
+                                <span class="ml-2 text-supermax-red font-semibold">5.0 рейтинг</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-utensils text-supermax-red"></i>
+                                <span class="text-gray-900">Премиум кухня</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-clock text-supermax-red"></i>
+                                <span class="text-gray-900">Работно време: 11:00 - 23:00</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-map-marker-alt text-supermax-red"></i>
+                                <span class="text-gray-900">ул.Захари Зограф 53 (срещу хотел Перла), София</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://restorantmaks.com" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="bg-supermax-red text-white px-8 py-4 rounded-full text-lg font-semibold text-center hover:bg-supermax-red-dark transition duration-300 transform hover:scale-105">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Към сайта на ресторанта
+                            </a>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://www.facebook.com/MaksRest/" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="bg-blue-600 text-white px-6 py-3 rounded-full text-base font-semibold text-center hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                                <i class="fab fa-facebook-f mr-2"></i>
+                                Facebook
+                            </a>
+                            <a href="tel:0885653705" 
+                               class="bg-green-600 text-white px-6 py-3 rounded-full text-base font-semibold text-center hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                                <i class="fas fa-phone mr-2"></i>
+                                088 565 3705
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-supermax-red rounded-3xl p-6 transform rotate-2 hover:rotate-0 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                             alt="Ресторант Макс - Премиум ресторант с изключителна кухня и атмосфера в София"
+                             class="w-full h-80 object-cover rounded-2xl shadow-2xl">
+                    </div>
+                    <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
+                        <i class="fas fa-utensils text-supermax-red text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Контакти Section -->
     <section id="contact" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Свържете се с нас</h2>
-                <p class="text-xl text-gray-600">Имате въпроси? Ние сме тук да помогнем!</p>
+                <h2 class="text-4xl font-bold text-supermax-red mb-4">Свържете се с нас</h2>
+                <p class="text-xl text-gray-900">Имате въпроси? Ние сме тук да помогнем!</p>
             </div>
             <div class="grid md:grid-cols-2 gap-12">
                 <div>
@@ -334,41 +459,41 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-supermax-red text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 gap-8">
                 <div>
-                    <h3 class="text-2xl font-bold text-supermax-red mb-4">Супермаркет Макс</h3>
-                    <p class="text-gray-400 mb-4">
+                    <h3 class="text-xl font-bold text-white mb-3">Супермаркет Макс</h3>
+                    <p class="text-sm text-white/90 mb-4">
                         Вашият доверен партньор за качествени хранителни продукти и изключително обслужване.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-supermax-red transition duration-300">
+                        <a href="#" class="text-white/80 hover:text-white transition duration-300">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-supermax-red transition duration-300">
+                        <a href="#" class="text-white/80 hover:text-white transition duration-300">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-supermax-red transition duration-300">
+                        <a href="#" class="text-white/80 hover:text-white transition duration-300">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-supermax-red transition duration-300">
+                        <a href="#" class="text-white/80 hover:text-white transition duration-300">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Бързи връзки</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#home" class="hover:text-supermax-red transition duration-300">Начало</a></li>
-                        <li><a href="#features" class="hover:text-supermax-red transition duration-300">Промоции</a></li>
-                        <li><a href="#products" class="hover:text-supermax-red transition duration-300">Магазини</a></li>
-                        <li><a href="#about" class="hover:text-supermax-red transition duration-300">За нас</a></li>
-                        <li><a href="#contact" class="hover:text-supermax-red transition duration-300">Контакти</a></li>
+                    <h4 class="text-lg font-semibold mb-3">Бързи връзки</h4>
+                    <ul class="space-y-2 text-sm text-white/80">
+                        <li><a href="#home" class="hover:text-white transition duration-300">Начало</a></li>
+                        <li><a href="#features" class="hover:text-white transition duration-300">Промоции</a></li>
+                        <li><a href="#products" class="hover:text-white transition duration-300">Магазини</a></li>
+                        <li><a href="#about" class="hover:text-white transition duration-300">За нас</a></li>
+                        <li><a href="#contact" class="hover:text-white transition duration-300">Контакти</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <div class="border-t border-white/20 mt-6 pt-4 text-center text-sm text-white/80">
                 <p>&copy; 2025 Супермаркет Макс. Всички права запазени.</p>
             </div>
         </div>
