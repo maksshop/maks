@@ -4,8 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
+        // Handle both click and touch events for better mobile support
+        mobileMenuButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             mobileMenu.classList.toggle('hidden');
+        });
+        
+        mobileMenuButton.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
         });
     }
 
@@ -113,19 +129,30 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastScrollTop = 0;
     let isScrolling = false;
 
+    // Ensure navbar is always sticky
+    if (navbar) {
+        navbar.style.position = 'fixed';
+        navbar.style.top = '0';
+        navbar.style.left = '0';
+        navbar.style.right = '0';
+        navbar.style.zIndex = '50';
+    }
+
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         // Always keep navbar visible (sticky behavior)
-        navbar.style.transform = 'translateY(0)';
-        
-        // Add enhanced background effect when scrolled
-        if (scrollTop > 50) {
-            navbar.classList.add('bg-white', 'bg-opacity-95', 'backdrop-blur-md', 'shadow-xl');
-            navbar.classList.remove('shadow-lg');
-        } else {
-            navbar.classList.remove('bg-white', 'bg-opacity-95', 'backdrop-blur-md', 'shadow-xl');
-            navbar.classList.add('shadow-lg');
+        if (navbar) {
+            navbar.style.transform = 'translateY(0)';
+            
+            // Add enhanced background effect when scrolled
+            if (scrollTop > 50) {
+                navbar.classList.add('bg-white', 'bg-opacity-95', 'backdrop-blur-md', 'shadow-xl');
+                navbar.classList.remove('shadow-lg');
+            } else {
+                navbar.classList.remove('bg-white', 'bg-opacity-95', 'backdrop-blur-md', 'shadow-xl');
+                navbar.classList.add('shadow-lg');
+            }
         }
 
         lastScrollTop = scrollTop;
@@ -234,7 +261,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Image enlargement functionality for promotion section
     const enlargeImageElements = document.querySelectorAll('.enlarge-image');
     enlargeImageElements.forEach(element => {
-        element.addEventListener('click', function() {
+        // Handle click events
+        element.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const imageSrc = this.getAttribute('data-image');
+            enlargeImageFunction(imageSrc);
+        });
+        
+        // Handle touch events for mobile
+        element.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             const imageSrc = this.getAttribute('data-image');
             enlargeImageFunction(imageSrc);
         });
@@ -245,21 +283,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create modal overlay
         const modal = document.createElement('div');
         modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
-        modal.onclick = function(e) {
+        modal.style.touchAction = 'none'; // Prevent scrolling on mobile
+        
+        // Close modal function
+        function closeModal() {
+            modal.remove();
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close on overlay click
+        modal.addEventListener('click', function(e) {
             if (e.target === modal) {
-                modal.remove();
+                closeModal();
             }
-        };
+        });
 
         // Create enlarged image container
         const imageContainer = document.createElement('div');
-        imageContainer.className = 'relative max-w-4xl max-h-screen p-4';
+        imageContainer.className = 'relative max-w-4xl max-h-screen p-2 sm:p-4';
+        imageContainer.style.touchAction = 'none'; // Prevent touch events from bubbling
 
         // Create enlarged image
         const enlargedImage = document.createElement('img');
         enlargedImage.src = imageSrc;
-        enlargedImage.className = 'w-full h-auto max-h-screen object-contain rounded-lg cursor-pointer';
+        enlargedImage.className = 'w-full h-auto max-h-screen object-contain rounded-lg';
         enlargedImage.alt = 'Enlarged promotional image';
+        enlargedImage.style.touchAction = 'none'; // Prevent touch events
+        
         enlargedImage.addEventListener('load', function() {
             enlargedImage.classList.add('loaded');
         });
@@ -267,29 +317,37 @@ document.addEventListener('DOMContentLoaded', function() {
             enlargedImage.classList.add('loaded');
         }
         
-        // Add click to close functionality to the image itself
-        enlargedImage.addEventListener('click', function() {
-            modal.remove();
+        // Add touch/click to close functionality to the image itself
+        enlargedImage.addEventListener('click', closeModal);
+        enlargedImage.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            closeModal();
         });
 
         // Create close button
         const closeButton = document.createElement('button');
-        closeButton.innerHTML = '<i class="fas fa-times text-white text-2xl"></i>';
-        closeButton.className = 'absolute top-2 right-2 bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300';
-        closeButton.onclick = function() {
-            modal.remove();
-        };
+        closeButton.innerHTML = '<i class="fas fa-times text-white text-xl sm:text-2xl"></i>';
+        closeButton.className = 'absolute top-1 right-1 sm:top-2 sm:right-2 bg-black bg-opacity-50 hover:bg-opacity-75 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center transition-all duration-300';
+        closeButton.style.touchAction = 'none';
+        closeButton.addEventListener('click', closeModal);
+        closeButton.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            closeModal();
+        });
 
         // Assemble modal
         imageContainer.appendChild(enlargedImage);
         imageContainer.appendChild(closeButton);
         modal.appendChild(imageContainer);
         document.body.appendChild(modal);
+        
+        // Prevent body scrolling when modal is open
+        document.body.style.overflow = 'hidden';
 
         // Add keyboard support for closing
         document.addEventListener('keydown', function closeOnEscape(e) {
             if (e.key === 'Escape') {
-                modal.remove();
+                closeModal();
                 document.removeEventListener('keydown', closeOnEscape);
             }
         });
