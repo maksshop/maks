@@ -72,7 +72,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <h1 class="text-2xl font-bold text-supermax-red">Супермаркет Макс</h1>
+                        <img src="img/logo.png" alt="Супермаркет Макс - Лого" class="h-12 sm:h-16 md:h-20 w-auto object-contain">
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
@@ -102,33 +102,52 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-16 bg-gradient-to-br from-white to-red-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid md:grid-cols-2 gap-6 items-center">
-                <div class="space-y-4">
-                    <div>
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-supermax-red leading-tight">
-                            Доставка до кв.Драгалевци кв.Симеоново
-                        </h1>
-                        <p class="text-base sm:text-lg md:text-xl text-gray-900 mt-3">
-                            Бърза и надеждна доставка на свежи хранителни продукти до вашия дом. Поръчайте по телефон и получите всичко необходимо за вашата трапеза с удобство и качество.
+    <section id="home" class="pt-16 bg-gradient-to-br from-red-50 via-white to-red-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-supermax-red mb-4">
+                    Доставка по домовете
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto">
+                    Доставяме свежи хранителни продукти до вашия дом в<br> кв. Драгалевци, кв. Симеоново, кв. Бояна, Бистрица и кв. Кръстова вада
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-supermax-red">
+                        <h2 class="text-xl sm:text-2xl font-semibold text-supermax-red mb-3">
+                            <i class="fas fa-clock mr-2"></i>
+                            Работно време
+                        </h2>
+                        <p class="text-gray-700">
+                            Понеделник - Неделя: 09:00ч. - 19:00ч.
+                        </p>
+                        <p class="text-sm text-gray-600 mt-2">
+                            Време за изпълнение: 30-60 минути
                         </p>
                     </div>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="tel:0882498493" class="bg-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold text-center hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                    
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-green-500">
+                        <h2 class="text-xl sm:text-2xl font-semibold text-green-600 mb-3">
+                            <i class="fas fa-phone mr-2"></i>
+                            Поръчайте сега
+                        </h2>
+                        <a href="tel:0882498493" class="inline-block bg-green-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-700 transition duration-300 transform hover:scale-105 shadow-lg">
                             <i class="fas fa-phone mr-2"></i>
                             0882 498 493
                         </a>
                     </div>
                 </div>
+                
                 <div class="relative">
-                    <div class="bg-supermax-red rounded-3xl p-4 sm:p-6 md:p-8 transform rotate-3 hover:rotate-0 transition duration-500">
-                        <img src="img/van.jpg"
-                             alt="Малък европейски камион за доставка на храна до кв. Драгалевци и кв. Симеоново"
-                             class="w-full h-48 sm:h-56 md:h-64 object-cover rounded-2xl shadow-2xl">
+                    <div class="bg-gradient-to-br from-supermax-red to-red-600 rounded-3xl p-4 shadow-2xl transform hover:scale-105 transition duration-500">
+                        <img src="img/delivery.jpg"
+                             alt="Доставка на храна до кв. Драгалевци и кв. Симеоново"
+                             class="w-full h-64 sm:h-72 md:h-80 object-cover rounded-2xl shadow-xl">
                     </div>
-                    <div class="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-white rounded-full p-2 sm:p-4 shadow-lg">
-                        <i class="fas fa-truck text-supermax-red text-lg sm:text-2xl"></i>
+                    <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-xl">
+                        <i class="fas fa-truck text-supermax-red text-2xl"></i>
                     </div>
                 </div>
             </div>
@@ -230,7 +249,7 @@
                         <p class="text-base"><strong>Адрес:</strong> кв. Младост 2, ул. Проф. Д.р Васил Златарски (до бл. 222), София</p>
                         <p class="text-base"><strong>Телефон:</strong> 0885-326-275</p>
                         <p class="text-base"><strong>Имейл:</strong> makstanchevi@abv.bg</p>
-                        <p class="text-base"><strong>Работно време:</strong> Понеделник-Неделя 08:30-21:30</p>
+                        <p class="text-base"><strong>Работно време:</strong> Понеделник-Неделя 08:30-21:00</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
@@ -327,7 +346,7 @@
                                 <i class="fas fa-star text-lg mr-1"></i>
                                 <i class="fas fa-star text-lg mr-1"></i>
                                 <i class="fas fa-star text-lg mr-1"></i>
-                                <span class="ml-2 text-supermax-red font-semibold">5.0 рейтинг</span>
+                                
                             </div>
                         </div>
                         <div class="space-y-3">
@@ -337,11 +356,23 @@
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fas fa-clock text-supermax-red"></i>
-                                <span class="text-gray-900">Работно време: 11:00 - 23:00</span>
+                                <span class="text-gray-900">Работно време: 09:00ч. - 21:00ч.</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fas fa-map-marker-alt text-supermax-red"></i>
                                 <span class="text-gray-900">ул.Захари Зограф 53 (срещу хотел Перла), София</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-phone text-supermax-red"></i>
+                                <span class="text-gray-900">0885 326 396</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-phone text-supermax-red"></i>
+                                <span class="text-gray-900">088 565 3705</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-envelope text-supermax-red"></i>
+                                <span class="text-gray-900">makstanchevi@abv.bg</span>
                             </div>
                         </div>
                     </div>
@@ -363,6 +394,11 @@
                                 <i class="fab fa-facebook-f mr-2"></i>
                                 Facebook
                             </a>
+                            <a href="tel:0885326396" 
+                               class="bg-green-600 text-white px-6 py-3 rounded-full text-base font-semibold text-center hover:bg-green-700 transition duration-300 transform hover:scale-105">
+                                <i class="fas fa-phone mr-2"></i>
+                                0885 326 396
+                            </a>
                             <a href="tel:0885653705" 
                                class="bg-green-600 text-white px-6 py-3 rounded-full text-base font-semibold text-center hover:bg-green-700 transition duration-300 transform hover:scale-105">
                                 <i class="fas fa-phone mr-2"></i>
@@ -373,7 +409,7 @@
                 </div>
                 <div class="relative">
                     <div class="bg-supermax-red rounded-3xl p-6 transform rotate-2 hover:rotate-0 transition duration-500">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        <img id="restaurant-image" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                              alt="Ресторант Макс - Премиум ресторант с изключителна кухня и атмосфера в София"
                              class="w-full h-80 object-cover rounded-2xl shadow-2xl">
                     </div>
@@ -411,7 +447,7 @@
                             </div>
                             <div>
                                 <div class="font-semibold text-gray-900">Телефон</div>
-                                <div class="text-gray-600">(+359) 555 123 456</div>
+                                <div class="text-gray-600">0885-326-275</div>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -420,7 +456,7 @@
                             </div>
                             <div>
                                 <div class="font-semibold text-gray-900">Имейл</div>
-                                <div class="text-gray-600">hello@supermarketmaks.bg</div>
+                                <div class="text-gray-600">makstanchevi@abv.bg</div>
                             </div>
                         </div>
                         <div class="flex items-center">
@@ -429,7 +465,7 @@
                             </div>
                             <div>
                                 <div class="font-semibold text-gray-900">Работно време</div>
-                                <div class="text-gray-600">Пон-Нед: 8ч-22ч</div>
+                                <div class="text-gray-600">Понеделник-Неделя 08:30-21:00</div>
                             </div>
                         </div>
                     </div>
@@ -437,7 +473,7 @@
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
                     <iframe
                         title="Карта на Супермаркет Макс - кв. Младост 2"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2927.123!2d23.373164!3d42.643631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2s%D0%BA%D0%B2.+%D0%9C%D0%BB%D0%B0%D0%B4%D0%BE%D1%81%D1%82+2+%D1%83%D0%BB.%D0%9F%D1%80%D0%BE%D1%84.%D0%94.%D1%80+%D0%92%D0%B0%D1%81%D0%B8%D0%BB+%D0%97%D0%BB%D0%B0%D1%82%D0%B0%D1%80%D1%81%D0%BA%D0%B8!5e0!3m2!1sen!2sbg!4v1730739000000!5m2!1sen!2sbg"
+                        src="https://maps.google.com/maps?q=42.64349292880592,23.373225331306458&z=16&output=embed"
                         width="100%"
                         height="420"
                         style="border:0;"
@@ -449,8 +485,7 @@
                     <div class="p-6 bg-gray-50 text-left">
                         <h3 class="text-2xl font-semibold text-gray-900 mb-2">Посетете нашия магазин</h3>
                         <p class="text-gray-600">
-                            Намираме се на адрес <strong>кв. Младост 2, ул. Проф. Д.р Васил Златарски (до бл. 222)</strong>. Паркингът е безплатен за клиенти,
-                            а общественият транспорт спира точно пред входа ни.
+                            Намираме се на адрес <strong>кв. Младост 2, ул. Проф. Д.р Васил Златарски (до бл. 222)</strong>. Паркингът е безплатен за клиенти.
                         </p>
                     </div>
                 </div>
@@ -464,33 +499,23 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
                     <h3 class="text-xl font-bold text-white mb-3">Супермаркет Макс</h3>
-                    <p class="text-sm text-white/90 mb-4">
+                    <p class="text-sm text-white/90 mb-4 leading-relaxed">
                         Вашият доверен партньор за качествени хранителни продукти и изключително обслужване.
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-white/80 hover:text-white transition duration-300">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="text-white/80 hover:text-white transition duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-white/80 hover:text-white transition duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-white/80 hover:text-white transition duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-3">Бързи връзки</h4>
-                    <ul class="space-y-2 text-sm text-white/80">
-                        <li><a href="#home" class="hover:text-white transition duration-300">Начало</a></li>
-                        <li><a href="#features" class="hover:text-white transition duration-300">Промоции</a></li>
-                        <li><a href="#products" class="hover:text-white transition duration-300">Магазини</a></li>
-                        <li><a href="#about" class="hover:text-white transition duration-300">За нас</a></li>
-                        <li><a href="#contact" class="hover:text-white transition duration-300">Контакти</a></li>
-                    </ul>
+                    <div class="grid grid-cols-2 gap-4">
+                        <ul class="space-y-2 text-sm text-white/80">
+                            <li><a href="#home" class="hover:text-white transition duration-300">Начало</a></li>
+                            <li><a href="#features" class="hover:text-white transition duration-300">Промоции</a></li>
+                            <li><a href="#products" class="hover:text-white transition duration-300">Магазини</a></li>
+                        </ul>
+                        <ul class="space-y-2 text-sm text-white/80">
+                            <li><a href="#about" class="hover:text-white transition duration-300">За нас</a></li>
+                            <li><a href="#contact" class="hover:text-white transition duration-300">Контакти</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="border-t border-white/20 mt-6 pt-4 text-center text-sm text-white/80">

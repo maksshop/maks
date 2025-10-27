@@ -394,4 +394,47 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 300);
         });
     }
+
+    // Restaurant Image Carousel
+    const restaurantImages = [
+        'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+        'https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    ];
+
+    const restaurantImageElement = document.querySelector('#restaurant-image');
+    let currentImageIndex = 0;
+    let isTransitioning = false;
+
+    if (restaurantImageElement) {
+        function changeRestaurantImage() {
+            if (isTransitioning) return;
+            
+            isTransitioning = true;
+            currentImageIndex = (currentImageIndex + 1) % restaurantImages.length;
+            
+            // Fade out
+            restaurantImageElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                restaurantImageElement.src = restaurantImages[currentImageIndex];
+                restaurantImageElement.classList.add('loaded');
+                
+                // Fade in
+                setTimeout(() => {
+                    restaurantImageElement.style.opacity = '1';
+                    isTransitioning = false;
+                }, 50);
+            }, 800);
+        }
+
+        // Change image every 6 seconds (slower)
+        setInterval(changeRestaurantImage, 6000);
+
+        // Add smooth fade transition effect
+        restaurantImageElement.style.transition = 'opacity 1s ease-in-out';
+        restaurantImageElement.style.opacity = '1';
+    }
 });
