@@ -395,13 +395,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Restaurant Image Carousel
+    // Restaurant Image Carousel (local images only)
     const restaurantImages = [
-        'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-        'https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+        'img/r_1.jpg',
+        'img/r_2.jpg',
+        'img/r_3.jpg',
+        'img/r_4.jpg',
+        'img/r_5.jpg'
     ];
 
     const restaurantImageElement = document.querySelector('#restaurant-image');
@@ -430,8 +430,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 800);
         }
 
-        // Change image every 6 seconds (slower)
-        setInterval(changeRestaurantImage, 6000);
+        // Change image every 3 seconds
+        setInterval(changeRestaurantImage, 3000);
 
         // Add smooth fade transition effect
         restaurantImageElement.style.transition = 'opacity 1s ease-in-out';
