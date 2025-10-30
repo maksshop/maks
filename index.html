@@ -48,7 +48,7 @@
     <title>Супермаркет Макс - Вашият премиум супермаркет</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="canonical" href="https://supermarketmaks.com">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -409,7 +409,7 @@
                 </div>
                 <div class="relative">
                     <div class="bg-supermax-red rounded-3xl p-6 transform rotate-2 hover:rotate-0 transition duration-500">
-                        <img id="restaurant-image" src="img/r_1.jpg"
+                        <img id="restaurant-image" src="img/restorant01.JPG"
                              alt="Ресторант Макс - Премиум ресторант с изключителна кухня и атмосфера в София"
                              class="w-full h-80 object-cover rounded-2xl shadow-2xl transition-opacity duration-1000 ease-in-out">
                     </div>
@@ -524,51 +524,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var restaurantImageEl = document.getElementById('restaurant-image');
-            if (!restaurantImageEl) return;
-
-            var restaurantImages = [
-                'img/r_1.jpg',
-                'img/r_2.jpg',
-                'img/r_3.jpg',
-                'img/r_4.jpg',
-                'img/r_5.jpg'
-            ];
-
-            var currentIndex = 0;
-            var isTransitioning = false;
-            var intervalMs = 3000; // rotate every 3s
-            var swapDelayMs = 500; // allow fade-out to progress before swap
-
-            setInterval(function () {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                restaurantImageEl.classList.add('opacity-0');
-
-                setTimeout(function () {
-                    currentIndex = (currentIndex + 1) % restaurantImages.length;
-                    var nextSrc = restaurantImages[currentIndex];
-
-                    // Ensure image fades in after the new source is ready
-                    var img = new Image();
-                    img.onload = function () {
-                        restaurantImageEl.src = nextSrc;
-                        // allow browser to apply new src before removing opacity
-                        requestAnimationFrame(function () {
-                            restaurantImageEl.classList.remove('opacity-0');
-                            // complete after transition duration
-                            setTimeout(function () {
-                                isTransitioning = false;
-                            }, 1000);
-                        });
-                    };
-                    img.src = nextSrc;
-                }, swapDelayMs);
-            }, intervalMs);
-        });
-    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>

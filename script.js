@@ -397,11 +397,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Restaurant Image Carousel (local images only)
     const restaurantImages = [
-        'img/r_1.jpg',
-        'img/r_2.jpg',
-        'img/r_3.jpg',
-        'img/r_4.jpg',
-        'img/r_5.jpg'
+        'img/restorant01.JPG',
+        'img/restorant02.JPG',
+        'img/restorant03.JPG',
+        'img/restorant04.JPG',
+        'img/restorant05.JPG'
     ];
 
     const restaurantImageElement = document.querySelector('#restaurant-image');
@@ -410,23 +410,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (restaurantImageElement) {
         function changeRestaurantImage() {
-            if (isTransitioning) return;
-            
+            if (isTransitioning || restaurantImages.length === 0) return;
+
             isTransitioning = true;
             currentImageIndex = (currentImageIndex + 1) % restaurantImages.length;
-            
+
             // Fade out
             restaurantImageElement.style.opacity = '0';
-            
+
             setTimeout(() => {
-                restaurantImageElement.src = restaurantImages[currentImageIndex];
-                restaurantImageElement.classList.add('loaded');
-                
-                // Fade in
-                setTimeout(() => {
-                    restaurantImageElement.style.opacity = '1';
+                const nextSrc = restaurantImages[currentImageIndex];
+                const probe = new Image();
+                probe.onload = function() {
+                    restaurantImageElement.src = nextSrc;
+                    restaurantImageElement.classList.add('loaded');
+                    // Fade in
+                    setTimeout(() => {
+                        restaurantImageElement.style.opacity = '1';
+                        isTransitioning = false;
+                    }, 50);
+                };
+                probe.onerror = function() {
+                    // Skip missing image and try the next one
                     isTransitioning = false;
-                }, 50);
+                    changeRestaurantImage();
+                };
+                probe.src = nextSrc;
             }, 800);
         }
 
