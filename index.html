@@ -13,14 +13,14 @@
     <meta property="og:description" content="Премиум супермаркет с качествени хранителни продукти и бърза доставка до кв. Драгалевци и кв. Симеоново, София.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://supermarketmaks.com">
-    <meta property="og:image" content="https://supermarketmaks.com/img/van.jpg">
+    <meta property="og:image" content="img/van.jpg">
     <meta property="og:locale" content="bg_BG">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Супермаркет Макс - Вашият премиум супермаркет">
     <meta name="twitter:description" content="Премиум супермаркет с качествени хранителни продукти и бърза доставка до кв. Драгалевци и кв. Симеоново, София.">
-    <meta name="twitter:image" content="https://supermarketmaks.com/img/van.jpg">
+    <meta name="twitter:image" content="img/van.jpg">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -312,7 +312,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    <img src="img/dragalevci.jpg"
                          alt="Супермаркет Макс - Магазин с качествени хранителни продукти и изключително обслужване"
                          class="w-full h-96 object-cover rounded-2xl shadow-2xl">
                     <div class="absolute -bottom-6 -left-6 bg-supermax-red text-white p-6 rounded-2xl shadow-lg">
@@ -409,9 +409,9 @@
                 </div>
                 <div class="relative">
                     <div class="bg-supermax-red rounded-3xl p-6 transform rotate-2 hover:rotate-0 transition duration-500">
-                        <img id="restaurant-image" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        <img id="restaurant-image" src="img/r_1.jpg"
                              alt="Ресторант Макс - Премиум ресторант с изключителна кухня и атмосфера в София"
-                             class="w-full h-80 object-cover rounded-2xl shadow-2xl">
+                             class="w-full h-80 object-cover rounded-2xl shadow-2xl transition-opacity duration-1000 ease-in-out">
                     </div>
                     <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
                         <i class="fas fa-utensils text-supermax-red text-2xl"></i>
@@ -524,6 +524,51 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var restaurantImageEl = document.getElementById('restaurant-image');
+            if (!restaurantImageEl) return;
+
+            var restaurantImages = [
+                'img/r_1.jpg',
+                'img/r_2.jpg',
+                'img/r_3.jpg',
+                'img/r_4.jpg',
+                'img/r_5.jpg'
+            ];
+
+            var currentIndex = 0;
+            var isTransitioning = false;
+            var intervalMs = 3000; // rotate every 3s
+            var swapDelayMs = 500; // allow fade-out to progress before swap
+
+            setInterval(function () {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                restaurantImageEl.classList.add('opacity-0');
+
+                setTimeout(function () {
+                    currentIndex = (currentIndex + 1) % restaurantImages.length;
+                    var nextSrc = restaurantImages[currentIndex];
+
+                    // Ensure image fades in after the new source is ready
+                    var img = new Image();
+                    img.onload = function () {
+                        restaurantImageEl.src = nextSrc;
+                        // allow browser to apply new src before removing opacity
+                        requestAnimationFrame(function () {
+                            restaurantImageEl.classList.remove('opacity-0');
+                            // complete after transition duration
+                            setTimeout(function () {
+                                isTransitioning = false;
+                            }, 1000);
+                        });
+                    };
+                    img.src = nextSrc;
+                }, swapDelayMs);
+            }, intervalMs);
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
