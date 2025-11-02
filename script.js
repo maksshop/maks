@@ -367,21 +367,25 @@ document.addEventListener('DOMContentLoaded', function() {
             enlargedImage.classList.add('loaded');
         }
         
-        // Double-click to zoom in/out
+        // Click to close when not zoomed, double-click to zoom when zoomed
         let lastTap = 0;
         enlargedImage.addEventListener('click', function(e) {
             const now = Date.now();
-            if (now - lastTap < 300 && !isDragging) {
-                // Double tap detected
+            const isDoubleTap = (now - lastTap < 300 && !isDragging);
+            
+            if (currentScale === 1) {
+                // When at normal zoom, single click closes modal
+                e.stopPropagation();
+                closeModal();
+            } else if (isDoubleTap) {
+                // When zoomed, double tap resets zoom
                 e.preventDefault();
-                if (currentScale === 1) {
-                    currentScale = 2;
-                    applyTransform();
-                } else {
-                    resetZoom();
-                }
+                e.stopPropagation();
+                resetZoom();
+            } else {
+                // First tap when zoomed - just update lastTap for double tap detection
+                lastTap = now;
             }
-            lastTap = now;
         });
         
         // Pinch-to-zoom for touch devices

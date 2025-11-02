@@ -17,6 +17,8 @@ html { scroll-behavior: smooth; }
 body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; color: var(--text); background: var(--bg); }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
+a[href^="mailto:"] { color: var(--supermax-red); text-decoration: underline; transition: color 0.2s ease; }
+a[href^="mailto:"]:hover { color: var(--supermax-red-dark); }
 button { font: inherit; border: 0; background: none; color: inherit; cursor: pointer; }
 
 /* Utilities */
@@ -69,7 +71,7 @@ nav.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backgrou
 .promos .sub { color: #111827; font-size: clamp(16px, 2vw, 18px); max-width: 720px; margin: 0 auto; }
 .grid4 { display: grid; gap: 20px; grid-template-columns: 1fr; }
 .promo-card { position: relative; overflow: hidden; border-radius: 24px; background: #fff; box-shadow: var(--shadow); cursor: pointer; }
-.promo-card img { height: 320px; width: 100%; object-fit: cover; transition: transform .5s ease; pointer-events: none; }
+.promo-card img { width: 100%; height: auto; object-fit: cover; transition: transform .5s ease; pointer-events: none; display: block; }
 .promo-card:hover img { transform: scale(1.05); }
 .promo-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; background: linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,0)); color: #fff; display: flex; justify-content: flex-end; pointer-events: none; }
 .promo-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; opacity: .9; }
@@ -383,6 +385,15 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
 .moon-icon {
     width: 20px;
     height: 20px;
+}
+
+/* Dark mode email links */
+.dark-mode a[href^="mailto:"] {
+    color: var(--supermax-red-light);
+}
+
+.dark-mode a[href^="mailto:"]:hover {
+    color: var(--supermax-red);
 }
 
 
