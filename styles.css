@@ -68,11 +68,12 @@ nav.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backgrou
 .promos .title { font-size: clamp(24px, 3vw, 36px); color: var(--supermax-red); font-weight: 800; margin: 0 0 12px; }
 .promos .sub { color: #111827; font-size: clamp(16px, 2vw, 18px); max-width: 720px; margin: 0 auto; }
 .grid4 { display: grid; gap: 20px; grid-template-columns: 1fr; }
-.promo-card { position: relative; overflow: hidden; border-radius: 24px; background: #fff; box-shadow: var(--shadow); }
-.promo-card img { height: 320px; width: 100%; object-fit: cover; transition: transform .5s ease; }
+.promo-card { position: relative; overflow: hidden; border-radius: 24px; background: #fff; box-shadow: var(--shadow); cursor: pointer; }
+.promo-card img { height: 320px; width: 100%; object-fit: cover; transition: transform .5s ease; pointer-events: none; }
 .promo-card:hover img { transform: scale(1.05); }
-.promo-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; background: linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,0)); color: #fff; display: flex; justify-content: flex-end; }
+.promo-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px; background: linear-gradient(to top, rgba(0,0,0,.7), rgba(0,0,0,0)); color: #fff; display: flex; justify-content: flex-end; pointer-events: none; }
 .promo-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; opacity: .9; }
+.enlarge-image { cursor: pointer; }
 
 /* Stores grid */
 .stores .title { text-align: center; font-size: clamp(24px, 3vw, 36px); color: var(--supermax-red); font-weight: 800; margin: 0 0 12px; }
