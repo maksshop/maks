@@ -78,12 +78,12 @@ nav.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backgrou
 .stores .title { text-align: center; font-size: clamp(24px, 3vw, 36px); color: var(--supermax-red); font-weight: 800; margin: 0 0 12px; }
 .stores .sub { text-align: center; color: #111827; margin-bottom: 24px; font-size: 18px; }
 .grid4.stores-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
-.store-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; }
+.store-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; display: flex; flex-direction: column; }
 .store-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: var(--shadow-lg); }
 .store-card img { height: 192px; width: 100%; object-fit: cover; }
-.store-card .body { padding: 20px; color: #111827; }
-.store-card h3 { margin: 0 0 8px; font-size: 22px; color: var(--supermax-red); }
-.store-card p { margin: 6px 0; font-size: 16px; }
+.store-card .body { padding: 20px; color: #111827; flex: 1; display: flex; flex-direction: column; text-align: left; }
+.store-card h3 { margin: 0 0 12px; font-size: 22px; color: var(--supermax-red); }
+.store-card p { margin: 0 0 8px; font-size: 16px; line-height: 1.6; }
 
 /* About */
 .about .grid { display: grid; gap: 32px; grid-template-columns: 1fr; align-items: center; }
@@ -163,8 +163,10 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
 /* Responsive */
 @media (max-width: 639px) {
     .container { padding: 0 12px; }
+    .pt-nav { padding-top: 80px !important; }
     .hero .image-frame { padding: 8px; }
     .section { padding: 48px 0; }
+    .hero.section { padding-top: 96px; }
     .about .image-note { left: 8px; bottom: 8px; padding: 12px; font-size: 14px; }
     .mapcard iframe { height: 300px; }
 }
@@ -205,6 +207,22 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
 .dark-mode {
     background: #1f2937;
     color: #f3f4f6;
+}
+
+/* Override dark text colors in dark mode */
+.dark-mode p[style*="color:#374151"],
+.dark-mode p[style*="color: #374151"],
+.dark-mode p[style*="color:#6b7280"],
+.dark-mode p[style*="color: #6b7280"],
+.dark-mode div[style*="color:#374151"],
+.dark-mode div[style*="color: #374151"],
+.dark-mode div[style*="color:#6b7280"],
+.dark-mode div[style*="color: #6b7280"],
+.dark-mode span[style*="color:#374151"],
+.dark-mode span[style*="color: #374151"],
+.dark-mode span[style*="color:#6b7280"],
+.dark-mode span[style*="color: #6b7280"] {
+    color: #d1d5db !important;
 }
 
 .dark-mode .site-nav {
@@ -256,6 +274,10 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
     color: #e5e7eb;
 }
 
+.dark-mode .card p {
+    color: #d1d5db !important;
+}
+
 .dark-mode .section {
     background: #1f2937;
     color: #f3f4f6;
@@ -273,10 +295,24 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
     color: var(--supermax-red-light);
 }
 
+.dark-mode .promos .title[style*="color: #111827"],
+.dark-mode .promos h2[style*="color: #111827"],
+.dark-mode h2[style*="color: #111827"] {
+    color: #d1d5db !important;
+}
+
 .dark-mode .promos .sub,
 .dark-mode .stores .sub,
 .dark-mode .about p,
 .dark-mode .contact .subtitle {
+    color: #d1d5db;
+}
+
+.dark-mode .restaurant .feature {
+    color: #e5e7eb;
+}
+
+.dark-mode .restaurant p {
     color: #d1d5db;
 }
 
@@ -304,6 +340,15 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
     background: var(--supermax-red);
 }
 
+.dark-mode .contact .info .row > div > div[style*="color:#6b7280"],
+.dark-mode .contact .info .row > div > div[style*="color: #6b7280"] {
+    color: #d1d5db !important;
+}
+
+.dark-mode .contact .info .row > div > div[style*="font-weight:600"] {
+    color: #e5e7eb !important;
+}
+
 .dark-mode .mapcard {
     background: #111827;
     border: 1px solid #374151;
@@ -316,6 +361,10 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
 .dark-mode .mapcard .body h3,
 .dark-mode .mapcard .body p {
     color: #e5e7eb;
+}
+
+.dark-mode .mapcard .body p {
+    color: #d1d5db !important;
 }
 
 .dark-mode .site-footer {
