@@ -314,7 +314,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create modal overlay
         const modal = document.createElement('div');
         modal.className = 'modal-overlay';
-        modal.style.touchAction = 'none'; // Prevent scrolling on mobile
         
         // Close modal function
         function closeModal() {
@@ -332,14 +331,34 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create enlarged image container
         const imageContainer = document.createElement('div');
         imageContainer.className = 'modal-image-wrap';
-        imageContainer.style.touchAction = 'none'; // Prevent touch events from bubbling
 
         // Create enlarged image
         const enlargedImage = document.createElement('img');
         enlargedImage.src = imageSrc;
         enlargedImage.className = 'modal-img';
         enlargedImage.alt = 'Enlarged promotional image';
-        enlargedImage.style.touchAction = 'none'; // Prevent touch events
+        
+        // Zoom state
+        let currentScale = 1;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let scrollLeft = 0;
+        let scrollTop = 0;
+        let initialDistance = 0;
+        let initialScale = 1;
+        
+        // Apply transform
+        function applyTransform() {
+            enlargedImage.style.transform = `scale(${currentScale})`;
+        }
+        
+        // Reset zoom
+        function resetZoom() {
+            currentScale = 1;
+            applyTransform();
+            enlargedImage.style.transformOrigin = 'center';
+        }
         
         enlargedImage.addEventListener('load', function() {
             enlargedImage.classList.add('loaded');
@@ -348,12 +367,117 @@ document.addEventListener('DOMContentLoaded', function() {
             enlargedImage.classList.add('loaded');
         }
         
-        // Add touch/click to close functionality to the image itself
-        enlargedImage.addEventListener('click', closeModal);
-        enlargedImage.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            closeModal();
+        // Double-click to zoom in/out
+        let lastTap = 0;
+        enlargedImage.addEventListener('click', function(e) {
+            const now = Date.now();
+            if (now - lastTap < 300 && !isDragging) {
+                // Double tap detected
+                e.preventDefault();
+                if (currentScale === 1) {
+                    currentScale = 2;
+                    applyTransform();
+                } else {
+                    resetZoom();
+                }
+            }
+            lastTap = now;
         });
+        
+        // Pinch-to-zoom for touch devices
+        let touches = [];
+        enlargedImage.addEventListener('touchstart', function(e) {
+            touches = Array.from(e.touches);
+            if (touches.length === 2) {
+                e.preventDefault();
+                const touch1 = touches[0];
+                const touch2 = touches[1];
+                initialDistance = Math.hypot(
+                    touch2.clientX - touch1.clientX,
+                    touch2.clientY - touch1.clientY
+                );
+                initialScale = currentScale;
+            } else if (touches.length === 1 && currentScale > 1) {
+                // Allow dragging when zoomed
+                isDragging = true;
+                startX = e.touches[0].pageX - enlargedImage.offsetLeft;
+                startY = e.touches[0].pageY - enlargedImage.offsetTop;
+            }
+        }, { passive: false });
+        
+        enlargedImage.addEventListener('touchmove', function(e) {
+            touches = Array.from(e.touches);
+            if (touches.length === 2) {
+                e.preventDefault();
+                const touch1 = touches[0];
+                const touch2 = touches[1];
+                const currentDistance = Math.hypot(
+                    touch2.clientX - touch1.clientX,
+                    touch2.clientY - touch1.clientY
+                );
+                const scale = initialScale * (currentDistance / initialDistance);
+                currentScale = Math.max(1, Math.min(scale, 4)); // Limit zoom between 1x and 4x
+                applyTransform();
+            } else if (isDragging && currentScale > 1) {
+                e.preventDefault();
+                const x = e.touches[0].pageX - startX;
+                const y = e.touches[0].pageY - startY;
+                enlargedImage.style.transform = `scale(${currentScale}) translate(${x / currentScale}px, ${y / currentScale}px)`;
+            }
+        }, { passive: false });
+        
+        enlargedImage.addEventListener('touchend', function(e) {
+            if (touches.length <= 1) {
+                isDragging = false;
+            }
+            if (e.touches.length === 0) {
+                touches = [];
+            }
+        }, { passive: true });
+
+        // Mouse wheel zoom
+        enlargedImage.addEventListener('wheel', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                currentScale = Math.max(1, Math.min(currentScale * delta, 4));
+                applyTransform();
+            }
+        }, { passive: false });
+        
+        // Create zoom controls
+        const zoomControls = document.createElement('div');
+        zoomControls.style.cssText = 'position: absolute; top: 8px; left: 8px; display: flex; gap: 8px; z-index: 1001;';
+        
+        const zoomInBtn = document.createElement('button');
+        zoomInBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path d="M12 5v14m-7-7h14" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';
+        zoomInBtn.style.cssText = 'background: rgba(0,0,0,0.6); border: none; border-radius: 8px; padding: 8px; cursor: pointer; color: #fff;';
+        zoomInBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentScale = Math.min(currentScale * 1.2, 4);
+            applyTransform();
+        });
+        
+        const zoomOutBtn = document.createElement('button');
+        zoomOutBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path d="M5 12h14" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';
+        zoomOutBtn.style.cssText = 'background: rgba(0,0,0,0.6); border: none; border-radius: 8px; padding: 8px; cursor: pointer; color: #fff;';
+        zoomOutBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            currentScale = Math.max(currentScale / 1.2, 1);
+            applyTransform();
+        });
+        
+        const resetBtn = document.createElement('button');
+        resetBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8M21 3v5h-5M3 21a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 16M21 21v-5h-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        resetBtn.style.cssText = 'background: rgba(0,0,0,0.6); border: none; border-radius: 8px; padding: 8px; cursor: pointer; color: #fff;';
+        resetBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            resetZoom();
+        });
+        
+        zoomControls.appendChild(zoomInBtn);
+        zoomControls.appendChild(zoomOutBtn);
+        zoomControls.appendChild(resetBtn);
 
         // Create close button
         const closeButton = document.createElement('button');
@@ -368,6 +492,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Assemble modal
         imageContainer.appendChild(enlargedImage);
+        imageContainer.appendChild(zoomControls);
         imageContainer.appendChild(closeButton);
         modal.appendChild(imageContainer);
         document.body.appendChild(modal);
@@ -382,6 +507,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.removeEventListener('keydown', closeOnEscape);
             }
         });
+        
+        // Initialize transform
+        applyTransform();
     };
 
     // Removed phone number ripple enhancement to match simplified markup
