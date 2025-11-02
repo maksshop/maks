@@ -163,10 +163,10 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
 /* Responsive */
 @media (max-width: 639px) {
     .container { padding: 0 12px; }
-    .pt-nav { padding-top: 80px !important; }
+    .pt-nav { padding-top: 100px !important; }
     .hero .image-frame { padding: 8px; }
     .section { padding: 48px 0; }
-    .hero.section { padding-top: 96px; }
+    .hero.section { padding-top: 120px; }
     .about .image-note { left: 8px; bottom: 8px; padding: 12px; font-size: 14px; }
     .mapcard iframe { height: 300px; }
 }
@@ -340,12 +340,13 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
     background: var(--supermax-red);
 }
 
-.dark-mode .contact .info .row > div > div[style*="color:#6b7280"],
-.dark-mode .contact .info .row > div > div[style*="color: #6b7280"] {
+.dark-mode .contact .info .row > div > div {
     color: #d1d5db !important;
 }
 
-.dark-mode .contact .info .row > div > div[style*="font-weight:600"] {
+.dark-mode .contact .info .row > div > div[style*="font-weight:600"],
+.dark-mode .contact .info .row > div > div[style*="font-weight:600"][style*="color:#111827"],
+.dark-mode .contact .info .row > div > div[style*="font-weight:600"][style*="color: #111827"] {
     color: #e5e7eb !important;
 }
 
