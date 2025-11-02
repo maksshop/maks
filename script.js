@@ -1,5 +1,50 @@
 // Mobile menu toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Dark mode toggle functionality
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const darkModeToggleDesktop = document.getElementById('dark-mode-toggle-desktop');
+    const sunIcon = document.querySelector('.sun-icon');
+    const moonIcon = document.querySelector('.moon-icon');
+    const sunIconDesktop = document.querySelector('.sun-icon-desktop');
+    const moonIconDesktop = document.querySelector('.moon-icon-desktop');
+    
+    // Check localStorage for saved preference
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    
+    function applyDarkMode(enabled) {
+        if (enabled) {
+            document.body.classList.add('dark-mode');
+            if (sunIcon) sunIcon.classList.add('hidden');
+            if (moonIcon) moonIcon.classList.remove('hidden');
+            if (sunIconDesktop) sunIconDesktop.classList.add('hidden');
+            if (moonIconDesktop) moonIconDesktop.classList.remove('hidden');
+        } else {
+            document.body.classList.remove('dark-mode');
+            if (sunIcon) sunIcon.classList.remove('hidden');
+            if (moonIcon) moonIcon.classList.add('hidden');
+            if (sunIconDesktop) sunIconDesktop.classList.remove('hidden');
+            if (moonIconDesktop) moonIconDesktop.classList.add('hidden');
+        }
+    }
+    
+    // Apply initial state
+    applyDarkMode(isDarkMode);
+    
+    // Toggle dark mode function
+    function toggleDarkMode() {
+        const isDark = document.body.classList.contains('dark-mode');
+        applyDarkMode(!isDark);
+        localStorage.setItem('darkMode', (!isDark).toString());
+    }
+    
+    // Add event listeners to both buttons
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+    }
+    if (darkModeToggleDesktop) {
+        darkModeToggleDesktop.addEventListener('click', toggleDarkMode);
+    }
+    
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
 
