@@ -253,16 +253,55 @@ document.addEventListener('DOMContentLoaded', function() {
     // Image enlargement functionality for promotion section
     const enlargeImageElements = document.querySelectorAll('.enlarge-image');
     enlargeImageElements.forEach(element => {
-        // Handle click events
-        element.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const imageSrc = this.getAttribute('data-image');
-            enlargeImageFunction(imageSrc);
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchMoved = false;
+        let touchStartTime = 0;
+        
+        // Handle touch start to detect scroll vs tap
+        element.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchMoved = false;
+            touchStartTime = Date.now();
+        }, { passive: true });
+        
+        // Track touch movement
+        element.addEventListener('touchmove', function(e) {
+            const touchCurrentX = e.touches[0].clientX;
+            const touchCurrentY = e.touches[0].clientY;
+            const deltaX = Math.abs(touchCurrentX - touchStartX);
+            const deltaY = Math.abs(touchCurrentY - touchStartY);
+            
+            // If moved more than 10px in any direction, consider it a scroll
+            if (deltaX > 10 || deltaY > 10) {
+                touchMoved = true;
+            }
+        }, { passive: true });
+        
+        // Handle touch end - only enlarge if it was a tap, not a scroll
+        element.addEventListener('touchend', function(e) {
+            const touchEndTime = Date.now();
+            const touchDuration = touchEndTime - touchStartTime;
+            
+            // Only trigger if:
+            // 1. Touch didn't move (or moved very little - less than 10px)
+            // 2. Touch duration was less than 300ms (quick tap, not a press)
+            if (!touchMoved && touchDuration < 300) {
+                e.preventDefault();
+                e.stopPropagation();
+                const imageSrc = this.getAttribute('data-image');
+                enlargeImageFunction(imageSrc);
+            }
         });
         
-        // Handle touch events for mobile
-        element.addEventListener('touchend', function(e) {
+        // Handle click events for desktop
+        element.addEventListener('click', function(e) {
+            // Only handle click if not triggered by touch
+            if (touchMoved) {
+                e.preventDefault();
+                return;
+            }
             e.preventDefault();
             e.stopPropagation();
             const imageSrc = this.getAttribute('data-image');
