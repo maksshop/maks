@@ -234,8 +234,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Scroll to top button
     const scrollToTopBtn = document.createElement('button');
-    scrollToTopBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-7 7h4v9h6v-9h4z" fill="#fff"/></svg>';
     scrollToTopBtn.className = 'scrolltop';
+    scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
+    
+    const scrollIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    scrollIcon.setAttribute('class', 'icon');
+    scrollIcon.setAttribute('viewBox', '0 0 24 24');
+    scrollIcon.setAttribute('aria-hidden', 'true');
+    const scrollPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    scrollPath.setAttribute('d', 'M12 4l-7 7h4v9h6v-9h4z');
+    scrollPath.setAttribute('fill', '#fff');
+    scrollIcon.appendChild(scrollPath);
+    scrollToTopBtn.appendChild(scrollIcon);
     document.body.appendChild(scrollToTopBtn);
 
     scrollToTopBtn.addEventListener('click', function() {
@@ -454,8 +464,20 @@ document.addEventListener('DOMContentLoaded', function() {
         zoomControls.style.cssText = 'position: absolute; top: 8px; left: 8px; display: flex; gap: 8px; z-index: 1001;';
         
         const zoomInBtn = document.createElement('button');
-        zoomInBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path d="M12 5v14m-7-7h14" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';
+        zoomInBtn.setAttribute('aria-label', 'Zoom in');
         zoomInBtn.style.cssText = 'background: rgba(0,0,0,0.6); border: none; border-radius: 8px; padding: 8px; cursor: pointer; color: #fff;';
+        
+        const zoomInSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        zoomInSvg.setAttribute('class', 'icon');
+        zoomInSvg.setAttribute('viewBox', '0 0 24 24');
+        zoomInSvg.setAttribute('style', 'width: 24px; height: 24px;');
+        const zoomInPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        zoomInPath.setAttribute('d', 'M12 5v14m-7-7h14');
+        zoomInPath.setAttribute('stroke', '#fff');
+        zoomInPath.setAttribute('stroke-width', '2');
+        zoomInPath.setAttribute('stroke-linecap', 'round');
+        zoomInSvg.appendChild(zoomInPath);
+        zoomInBtn.appendChild(zoomInSvg);
         zoomInBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             currentScale = Math.min(currentScale * 1.2, 4);
@@ -463,8 +485,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         const zoomOutBtn = document.createElement('button');
-        zoomOutBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path d="M5 12h14" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>';
+        zoomOutBtn.setAttribute('aria-label', 'Zoom out');
         zoomOutBtn.style.cssText = 'background: rgba(0,0,0,0.6); border: none; border-radius: 8px; padding: 8px; cursor: pointer; color: #fff;';
+        
+        const zoomOutSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        zoomOutSvg.setAttribute('class', 'icon');
+        zoomOutSvg.setAttribute('viewBox', '0 0 24 24');
+        zoomOutSvg.setAttribute('style', 'width: 24px; height: 24px;');
+        const zoomOutPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        zoomOutPath.setAttribute('d', 'M5 12h14');
+        zoomOutPath.setAttribute('stroke', '#fff');
+        zoomOutPath.setAttribute('stroke-width', '2');
+        zoomOutPath.setAttribute('stroke-linecap', 'round');
+        zoomOutSvg.appendChild(zoomOutPath);
+        zoomOutBtn.appendChild(zoomOutSvg);
         zoomOutBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             currentScale = Math.max(currentScale / 1.2, 1);
@@ -472,8 +506,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         const resetBtn = document.createElement('button');
-        resetBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24" style="width: 24px; height: 24px;"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8M21 3v5h-5M3 21a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 16M21 21v-5h-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        resetBtn.setAttribute('aria-label', 'Reset zoom');
         resetBtn.style.cssText = 'background: rgba(0,0,0,0.6); border: none; border-radius: 8px; padding: 8px; cursor: pointer; color: #fff;';
+        
+        const resetSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        resetSvg.setAttribute('class', 'icon');
+        resetSvg.setAttribute('viewBox', '0 0 24 24');
+        resetSvg.setAttribute('style', 'width: 24px; height: 24px;');
+        const resetPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        resetPath.setAttribute('d', 'M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8M21 3v5h-5M3 21a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 16M21 21v-5h-5');
+        resetPath.setAttribute('stroke', '#fff');
+        resetPath.setAttribute('stroke-width', '2');
+        resetPath.setAttribute('stroke-linecap', 'round');
+        resetPath.setAttribute('stroke-linejoin', 'round');
+        resetSvg.appendChild(resetPath);
+        resetBtn.appendChild(resetSvg);
         resetBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             resetZoom();
@@ -520,11 +567,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Restaurant Image Carousel (local images only)
     const restaurantImages = [
-        'img/restorant01.JPG',
+        'img/restorant01.jpg',
         'img/restorant02.JPG',
         'img/restorant03.JPG',
         'img/restorant04.JPG',
-        'img/restorant05.JPG'
+        'img/restorant05.jpg',
+        'img/restorant06.jpeg'
     ];
 
     const restaurantImageElement = document.querySelector('#restaurant-image');
@@ -568,5 +616,57 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add smooth fade transition effect
         restaurantImageElement.style.transition = 'opacity 1s ease-in-out';
         restaurantImageElement.style.opacity = '1';
+    }
+
+    // Delivery Image Carousel
+    const deliveryImages = [
+        'img/delivery.jpg',
+        'img/van.jpg',
+        'img/dragalevci.JPG',
+        'img/mladost.JPG'
+    ];
+
+    const deliveryImageElement = document.querySelector('#delivery-image');
+    let currentDeliveryIndex = 0;
+    let isDeliveryTransitioning = false;
+
+    if (deliveryImageElement) {
+        function changeDeliveryImage() {
+            if (isDeliveryTransitioning || deliveryImages.length === 0) return;
+
+            isDeliveryTransitioning = true;
+            currentDeliveryIndex = (currentDeliveryIndex + 1) % deliveryImages.length;
+
+            // Fade out
+            deliveryImageElement.style.opacity = '0';
+
+            setTimeout(() => {
+                const nextSrc = deliveryImages[currentDeliveryIndex];
+
+                // Preload next image
+                const img = new Image();
+                img.onload = () => {
+                    deliveryImageElement.src = nextSrc;
+                    deliveryImageElement.classList.add('loaded');
+
+                    setTimeout(() => {
+                        deliveryImageElement.style.opacity = '1';
+                        isDeliveryTransitioning = false;
+                    }, 50);
+                };
+                img.onerror = () => {
+                    isDeliveryTransitioning = false;
+                    changeDeliveryImage();
+                };
+                img.src = nextSrc;
+            }, 1000);
+        }
+
+        // Change image every 3 seconds
+        setInterval(changeDeliveryImage, 3000);
+
+        // Add smooth fade transition effect
+        deliveryImageElement.style.transition = 'opacity 1s ease-in-out';
+        deliveryImageElement.style.opacity = '1';
     }
 });

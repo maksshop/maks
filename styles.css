@@ -21,6 +21,45 @@ a[href^="mailto:"] { color: var(--supermax-red); text-decoration: underline; tra
 a[href^="mailto:"]:hover { color: var(--supermax-red-dark); }
 button { font: inherit; border: 0; background: none; color: inherit; cursor: pointer; }
 
+/* Skip navigation link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--supermax-red);
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 0 0 8px 0;
+    font-weight: 600;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Focus indicators */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--supermax-red);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--supermax-red);
+    outline-offset: 2px;
+}
+
 /* Utilities */
 .container { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 .hidden { display: none !important; }
@@ -59,9 +98,9 @@ nav.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backgrou
 .hero .cta { display: inline-flex; align-items: center; gap: 8px; background: #16a34a; color: #fff; padding: 14px 24px; border-radius: 999px; font-weight: 700; transition: transform .2s ease, background .2s ease; box-shadow: var(--shadow); }
 .hero .cta:hover { background: #15803d; transform: scale(1.03); }
 .hero .image-wrap { position: relative; }
-.hero .image-frame { background: linear-gradient(135deg, var(--supermax-red), #ef4444); padding: 12px; border-radius: 24px; box-shadow: var(--shadow-lg); transition: transform .5s ease; display: flex; justify-content: center; align-items: center; }
+.hero .image-frame { background: linear-gradient(135deg, var(--supermax-red), #ef4444); padding: 12px; border-radius: 20px; box-shadow: var(--shadow-lg); transition: transform .5s ease; display: flex; justify-content: center; align-items: center; aspect-ratio: 4/3; max-width: 85%; margin: 0 auto; }
 .hero .image-frame:hover { transform: scale(1.03); }
-.hero .image-frame img { height: clamp(200px, 30vw, 280px); }
+.hero .image-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
 .hero .badge-icon { position: absolute; top: -12px; right: -12px; background: #fff; border-radius: 999px; padding: 12px; box-shadow: var(--shadow-lg); }
 .icon { width: 24px; height: 24px; fill: currentColor; display: inline-block; }
 
@@ -127,6 +166,35 @@ nav.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; backgrou
 .contact .info .iconwrap { background: var(--supermax-red); color: #fff; padding: 10px; border-radius: 999px; margin-right: 12px; display: inline-flex; }
 .mapcard { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
 .mapcard .body { background: #f9fafb; padding: 16px; }
+.map-wrapper { position: relative; }
+.map-directions-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--supermax-red);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform .2s ease, opacity .2s ease, box-shadow .3s ease;
+    z-index: 10;
+}
+.map-directions-btn:hover {
+    background: var(--supermax-red-dark);
+    transform: scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+.map-directions-btn svg {
+    width: 20px;
+    height: 20px;
+}
 
 /* Footer */
 footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px 0; }
@@ -167,7 +235,7 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
 @media (max-width: 639px) {
     .container { padding: 0 12px; }
     .pt-nav { padding-top: 100px !important; }
-    .hero .image-frame { padding: 8px; }
+    .hero .image-frame { padding: 8px; max-width: 100%; }
     .section { padding: 48px 0; }
     .hero.section { padding-top: 120px; }
     .about .image-note { left: 8px; bottom: 8px; padding: 12px; font-size: 14px; }
@@ -311,6 +379,10 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
     color: #d1d5db;
 }
 
+.dark-mode .promo-date {
+    color: #d1d5db !important;
+}
+
 .dark-mode .restaurant .feature {
     color: #e5e7eb;
 }
@@ -394,6 +466,21 @@ footer.site-footer { background: var(--supermax-red); color: #fff; padding: 32px
 
 .dark-mode a[href^="mailto:"]:hover {
     color: var(--supermax-red);
+}
+
+/* Dark mode skip link */
+.dark-mode .skip-link {
+    background: var(--supermax-red-dark);
+}
+
+.dark-mode .skip-link:focus {
+    outline-color: #fff;
+}
+
+/* Accessibility: Ensure focus is visible in dark mode */
+.dark-mode button:focus-visible,
+.dark-mode a:focus-visible {
+    outline-color: var(--supermax-red-light);
 }
 
 

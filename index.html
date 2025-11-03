@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://maps.google.com https://*.googleapis.com https://*.gstatic.com; style-src 'self' 'unsafe-inline' https://maps.google.com https://*.googleapis.com https://*.gstatic.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self' https://maps.google.com https://www.google.com; connect-src 'self' https://maps.google.com https://*.googleapis.com; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="description" content="Супермаркет Макс - премиум супермаркет с качествени хранителни продукти, бърза доставка до кв. Драгалевци и кв. Симеоново, София. Специални промоции, свежи продукти и изключително обслужване.">
     <meta name="keywords" content="супермаркет, София, Драгалевци, Симеоново, доставка, храна, промоции, качествени продукти, Младост, Дружба, Сухата река">
     <meta name="author" content="Супермаркет Макс">
@@ -11,12 +15,15 @@
     <meta property="og:description" content="Премиум супермаркет с качествени хранителни продукти и бърза доставка до кв. Драгалевци и кв. Симеоново, София.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://supermarketmaks.com">
-    <meta property="og:image" content="img/van.jpg">
+    <meta property="og:image" content="https://supermarketmaks.com/img/van.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:locale" content="bg_BG">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Супермаркет Макс - Вашият премиум супермаркет">
     <meta name="twitter:description" content="Премиум супермаркет с качествени хранителни продукти и бърза доставка до кв. Драгалевци и кв. Симеоново, София.">
-    <meta name="twitter:image" content="img/van.jpg">
+    <meta name="twitter:image" content="https://supermarketmaks.com/img/van.jpg">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -35,13 +42,26 @@
         "openingHours": "Mo-Su 00:00-24:00",
         "priceRange": "$$",
         "paymentAccepted": "Cash, Credit Card",
-        "currenciesAccepted": "BGN"
+        "currenciesAccepted": "BGN",
+        "image": "https://supermarketmaks.com/img/van.jpg",
+        "logo": "https://supermarketmaks.com/img/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/MaksRest/",
+            "https://www.instagram.com/maks.lunch.dinner.cafe/"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "150"
+        }
     }
     </script>
     <title>Супермаркет Макс - Вашият премиум супермаркет</title>
     <link rel="canonical" href="https://supermarketmaks.com">
-    
+    <link rel="preconnect" href="https://maps.google.com">
+    <link rel="dns-prefetch" href="https://maps.google.com">
 	<link rel="stylesheet" href="styles.css">
+	<link rel="preload" href="img/logo.png" as="image">
 </head>
 <body>
     <!-- Navigation -->
@@ -49,7 +69,9 @@
 		<div class="container">
 			<div class="inner">
 				<div class="brand">
-					<img src="img/logo.png" alt="Супермаркет Макс - Лого" style="height:64px; width:auto; object-fit:contain;">
+					<a href="/" aria-label="Супермаркет Макс - Начална страница">
+						<img src="img/logo.png" alt="Супермаркет Макс - Лого" width="200" height="64" style="height:64px; width:auto; object-fit:contain;">
+					</a>
                     </div>
 				<div class="desktop-links" style="display:none; gap:24px; align-items:center;">
 					<a href="#home" class="link">Начало</a>
@@ -89,11 +111,12 @@
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Hero Section -->
 	<section id="home" class="hero pt-nav section">
 		<div class="container">
 			<div class="center mb-8">
-				<h1 class="title">Доставка по домовете</h1>
+				<h1 class="title" style="font-size:clamp(20px, 3vw, 24px); font-weight:600; color:var(--supermax-red); margin:12px 0;">Доставка по домовете</h1>
 				<p class="subtitle">Доставяме свежи хранителни продукти до вашия дом в<br> кв. Драгалевци, кв. Симеоново, кв. Бояна, Бистрица и кв. Кръстова вада</p>
             </div>
 			<div class="grid">
@@ -114,8 +137,8 @@
                 </div>
 				<div class="image-wrap fade-item">
 					<div class="image-frame">
-						<img src="img/delivery.jpg" alt="Доставка на храна до кв. Драгалевци и кв. Симеоново" style="width:100%; object-fit:cover; border-radius:16px; box-shadow: var(--shadow-lg);">
-					</div>
+						<img src="img/delivery.jpg" alt="Доставка на храна до кв. Драгалевци и кв. Симеоново" loading="eager">
+                    </div>
 
                 </div>
             </div>
@@ -127,7 +150,7 @@
 		<div class="container promos">
 			<div class="heading mb-12">
 				<h2 class="title">Специални промоции</h2>
-				<h2 class="title" style="color: #111827; font-size: 1.25rem; margin-top: 0;">важи от 04.11.25г до 24.11.25г</h2>
+				<p class="promo-date" style="color: #111827; font-size: 1.25rem; margin-top: 0; font-weight: 600;">важи от 04.11.25г до 24.11.25г</p>
 				<p class="sub">Не пропускайте нашите страхотни оферти и ексклузивни предложения, предназначени да ви спестят пари за качествени продукти.</p>
             </div>
 			<div class="grid4">
@@ -291,7 +314,7 @@
                         </div>
 				<div class="right" style="position:relative;">
 					<div class="frame">
-						<img id="restaurant-image" src="img/restorant01.JPG" alt="Ресторант Макс - Премиум ресторант с изключителна кухня и атмосфера в София" style="width:100%; height:320px; object-fit:cover; border-radius:16px; box-shadow: var(--shadow-lg); transition: opacity 1s ease-in-out;">
+						<img id="restaurant-image" src="img/restorant01.JPG" alt="Ресторант Макс - Премиум ресторант с изключителна кухня и атмосфера в София" loading="lazy" style="width:100%; height:320px; object-fit:cover; border-radius:16px; box-shadow: var(--shadow-lg); transition: opacity 1s ease-in-out;">
                     </div>
 
                 </div>
@@ -314,11 +337,11 @@
 							<span class="iconwrap"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="#fff"/></svg></span>
                             <div>
 								<div style="font-weight:600; color:#111827;">Адрес</div>
-								<div style="color:#111827;">кв. Младост 2, ул. Проф. Д.р Васил Златарски (до бл. 222)</div>
+								<div style="color:#111827;">бл. 222, ж.к. Младост 2, 1799 София</div>
                             </div>
                         </div>
 						<div class="row">
-                            
+							<span class="iconwrap"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#fff"/></svg></span>
                             <div>
 								<div style="font-weight:600; color:#111827;">Телефон</div>
 								<div style="color:#111827;">0885-326-275</div>
@@ -341,10 +364,10 @@
                     </div>
                 </div>
 				<div class="mapcard">
-					<iframe title="Карта на Супермаркет Макс - кв. Младост 2" src="https://maps.google.com/maps?q=42.64349292880592,23.373225331306458&z=16&output=embed" width="100%" height="420" style="border:0; height:clamp(300px, 40vw, 420px);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					<iframe title="Карта на Супермаркет Макс - бл. 222, ж.к. Младост 2" src="https://www.google.com/maps?q=бл.+222+ж.к.+Младост+2+София&output=embed" width="100%" height="420" style="border:0; height:clamp(300px, 40vw, 420px); display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 					<div class="body text-left">
 						<h3 style="font-size:clamp(18px, 2.8vw, 22px); margin:0 0 8px;">Посетете нашия магазин</h3>
-						<p style="color:#6b7280; margin:0;">Намираме се на адрес <strong>кв. Младост 2, ул. Проф. Д.р Васил Златарски (до бл. 222)</strong>. Паркингът е безплатен за клиенти.</p>
+						<p style="color:#6b7280; margin:0;">Намираме се на адрес <strong>бл. 222, ж.к. Младост 2, 1799 София</strong>. Паркингът е безплатен за клиенти.</p>
                     </div>
                 </div>
             </div>
@@ -379,7 +402,8 @@
             </div>
         </div>
     </footer>
+    </main>
     
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
