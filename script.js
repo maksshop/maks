@@ -1,5 +1,15 @@
+// Force scroll to top on page load
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
+
 // Mobile menu toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
     // Dark mode toggle functionality
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const darkModeToggleDesktop = document.getElementById('dark-mode-toggle-desktop');
