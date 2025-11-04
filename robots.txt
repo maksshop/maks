@@ -1,13 +1,16 @@
-# robots.txt for Супермаркет Макс
-# https://supermarketmaks.com/robots.txt
+# robots.txt for Ресторант МАКС
+# https://restorantmaks.com/robots.txt
 
 User-agent: *
 Allow: /
 
-# Disallow admin or private areas (if any exist in future)
+# Disallow admin areas if they exist
 # Disallow: /admin/
 # Disallow: /private/
 
 # Sitemap location
-Sitemap: https://supermarketmaks.com/sitemap.xml
+Sitemap: https://restorantmaks.com/sitemap.xml
+
+# Crawl-delay (optional, adjust if needed)
+# Crawl-delay: 1
 
