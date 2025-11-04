@@ -1,0 +1,360 @@
+/* ========================================
+   Menu Page Styles
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ========================================
+   Header Styles
+   ======================================== */
+
+.menu-header {
+    background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(206, 50, 50, 0.3);
+}
+
+.menu-header h1 {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.restaurant-name {
+    font-size: 1.3em;
+    font-weight: 300;
+    opacity: 0.95;
+}
+
+/* ========================================
+   Filter Tabs Styles
+   ======================================== */
+
+.menu-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.tab-button {
+    background: white;
+    border: 2px solid #ce3232;
+    color: #ce3232;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.tab-button i {
+    font-size: 1.1em;
+}
+
+.tab-button:hover {
+    background: #ce3232;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(206, 50, 50, 0.3);
+}
+
+.tab-button.active {
+    background: #ce3232;
+    color: white;
+    box-shadow: 0 4px 12px rgba(206, 50, 50, 0.4);
+}
+
+/* ========================================
+   Search Bar Styles
+   ======================================== */
+
+.search-container {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 40px;
+}
+
+.search-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.1em;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #ce3232;
+    box-shadow: 0 0 0 3px rgba(206, 50, 50, 0.1);
+}
+
+/* ========================================
+   Menu Content Styles
+   ======================================== */
+
+.menu-content {
+    margin-bottom: 40px;
+}
+
+.menu-section {
+    margin-bottom: 50px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.menu-section.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-header {
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 2em;
+    color: #ce3232;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-header h2 i {
+    font-size: 0.9em;
+}
+
+.section-line {
+    height: 3px;
+    width: 80px;
+    background: linear-gradient(to right, #ce3232, transparent);
+    margin-top: 5px;
+}
+
+/* ========================================
+   Dishes Grid Styles
+   ======================================== */
+
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.dish-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid #ce3232;
+}
+
+.dish-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(206, 50, 50, 0.2);
+    border-left-width: 6px;
+}
+
+.dish-info {
+    flex: 1;
+    padding-right: 15px;
+}
+
+.dish-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.dish-description {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.5;
+}
+
+.dish-price {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #ce3232;
+    white-space: nowrap;
+    padding-left: 15px;
+    border-left: 2px solid #eee;
+}
+
+/* ========================================
+   Footer Styles
+   ======================================== */
+
+.menu-footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.menu-footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* ========================================
+   No Results Message
+   ======================================== */
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 1.2em;
+}
+
+.no-results i {
+    font-size: 3em;
+    margin-bottom: 20px;
+    display: block;
+    color: #ddd;
+}
+
+/* ========================================
+   Responsive Styles
+   ======================================== */
+
+@media screen and (max-width: 768px) {
+    .menu-header h1 {
+        font-size: 2em;
+    }
+
+    .restaurant-name {
+        font-size: 1.1em;
+    }
+
+    .menu-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-button {
+        font-size: 0.85em;
+        padding: 10px 18px;
+    }
+
+    .dishes-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dish-card {
+        padding: 15px;
+    }
+
+    .dish-name {
+        font-size: 1.1em;
+    }
+
+    .dish-price {
+        font-size: 1.2em;
+    }
+
+    .section-header h2 {
+        font-size: 1.6em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .menu-container {
+        padding: 10px;
+    }
+
+    .menu-header {
+        padding: 30px 15px;
+    }
+
+    .menu-header h1 {
+        font-size: 1.8em;
+    }
+
+    .tab-button {
+        font-size: 0.75em;
+        padding: 8px 15px;
+    }
+
+    .search-input {
+        padding: 12px 12px 12px 40px;
+        font-size: 0.9em;
+    }
+
+    .dish-card {
+        flex-direction: column;
+    }
+
+    .dish-price {
+        border-left: none;
+        border-top: 2px solid #eee;
+        padding-left: 0;
+        padding-top: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
