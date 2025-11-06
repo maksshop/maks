@@ -10,16 +10,33 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
     color: #333;
     line-height: 1.6;
     min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(206, 50, 50, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(206, 50, 50, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .menu-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 /* ========================================
@@ -29,25 +46,81 @@ body {
 .menu-header {
     background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
     color: white;
-    padding: 40px 20px;
+    padding: 60px 40px;
     text-align: center;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    box-shadow: 0 5px 15px rgba(206, 50, 50, 0.3);
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 40px rgba(206, 50, 50, 0.4);
+    position: relative;
+    overflow: visible;
+}
+
+.menu-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: headerShine 8s infinite;
+}
+
+@keyframes headerShine {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20%, -20%); }
 }
 
 .menu-header h1 {
-    font-size: 3em;
-    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em;
+    font-weight: 800;
     margin-bottom: 10px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .restaurant-name {
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: 300;
     opacity: 0.95;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 2px;
+}
+
+/* ========================================
+   Theme Toggle Button
+   ======================================== */
+
+.theme-toggle {
+    background: rgba(206, 50, 50, 0.1);
+    border: 2px solid #ce3232;
+    color: #ce3232;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    background: #ce3232;
+    color: white;
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 4px 15px rgba(206, 50, 50, 0.3);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95) rotate(15deg);
 }
 
 /* ========================================
@@ -56,19 +129,59 @@ body {
 
 .menu-tabs {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tabs-wrapper {
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 30px;
-    padding: 0 10px;
+    flex: 1;
+}
+
+.menu-tabs.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.menu-tabs.sticky + .menu-content {
+    padding-top: 100px;
 }
 
 .tab-button {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     border: 2px solid #ce3232;
     color: #ce3232;
-    padding: 12px 24px;
-    border-radius: 25px;
+    padding: 14px 28px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 0.95em;
     font-weight: 600;
@@ -77,6 +190,8 @@ body {
     align-items: center;
     gap: 8px;
     white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .tab-button i {
@@ -86,50 +201,17 @@ body {
 .tab-button:hover {
     background: #ce3232;
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(206, 50, 50, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(206, 50, 50, 0.4);
 }
 
 .tab-button.active {
-    background: #ce3232;
+    background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
     color: white;
-    box-shadow: 0 4px 12px rgba(206, 50, 50, 0.4);
-}
-
-/* ========================================
-   Search Bar Styles
-   ======================================== */
-
-.search-container {
-    position: relative;
-    max-width: 500px;
-    margin: 0 auto 40px;
-}
-
-.search-container i {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #999;
-    font-size: 1.1em;
-}
-
-.search-input {
-    width: 100%;
-    padding: 15px 15px 15px 45px;
-    border: 2px solid #ddd;
-    border-radius: 30px;
-    font-size: 1em;
-    transition: all 0.3s ease;
-    background: white;
-}
-
-.search-input:focus {
-    outline: none;
+    box-shadow: 0 4px 15px rgba(206, 50, 50, 0.5);
     border-color: #ce3232;
-    box-shadow: 0 0 0 3px rgba(206, 50, 50, 0.1);
 }
+
 
 /* ========================================
    Menu Content Styles
@@ -164,12 +246,15 @@ body {
 }
 
 .section-header h2 {
-    font-size: 2em;
-    color: #ce3232;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    color: #2c2c2c;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    font-weight: 700;
+    text-shadow: none;
 }
 
 .section-header h2 i {
@@ -177,10 +262,12 @@ body {
 }
 
 .section-line {
-    height: 3px;
-    width: 80px;
-    background: linear-gradient(to right, #ce3232, transparent);
+    height: 4px;
+    width: 100px;
+    background: linear-gradient(to right, #ce3232, #ff6b6b, transparent);
     margin-top: 5px;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(206, 50, 50, 0.3);
 }
 
 /* ========================================
@@ -189,53 +276,134 @@ body {
 
 .dishes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
 }
 
 .dish-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border-left: 4px solid #ce3232;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border-top: 5px solid #ce3232;
+    position: relative;
+}
+
+.dish-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(206, 50, 50, 0.3), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.dish-card:hover::after {
+    opacity: 1;
 }
 
 .dish-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(206, 50, 50, 0.2);
-    border-left-width: 6px;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(206, 50, 50, 0.25), 0 0 0 1px rgba(206, 50, 50, 0.1);
+    border-top-width: 5px;
+}
+
+.dish-card:hover .dish-image img {
+    transform: scale(1.08);
+}
+
+.dish-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    position: relative;
+}
+
+.dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    filter: brightness(1.05) contrast(1.05);
+}
+
+.dish-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.15) 100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.dish-card:hover .dish-image::after {
+    background: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(206, 50, 50, 0.1) 100%);
 }
 
 .dish-info {
+    padding: 24px;
     flex: 1;
-    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
 }
 
 .dish-name {
-    font-size: 1.2em;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35em;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
+    color: #2c2c2c;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
 }
 
 .dish-description {
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: #666;
-    line-height: 1.5;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-weight: 400;
 }
 
 .dish-price {
-    font-size: 1.3em;
+    font-size: 1.4em;
     font-weight: 700;
     color: #ce3232;
-    white-space: nowrap;
-    padding-left: 15px;
-    border-left: 2px solid #eee;
+    margin-top: auto;
+    padding: 16px 24px;
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-bottom: -24px;
+    border-top: 2px solid rgba(206, 50, 50, 0.1);
+    text-align: center;
+    background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(206, 50, 50, 0.1);
+    transition: all 0.3s ease;
+}
+
+.dish-card:hover .dish-price {
+    background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+    color: #b02828;
 }
 
 /* ========================================
@@ -243,17 +411,20 @@ body {
    ======================================== */
 
 .menu-footer {
-    background: #333;
-    color: white;
+    background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
+    color: rgba(255, 255, 255, 0.95);
     text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 50px;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 60px;
+    box-shadow: 0 4px 20px rgba(206, 50, 50, 0.3);
+    border-top: 3px solid #fff;
 }
 
 .menu-footer p {
     margin: 0;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
 }
 
 /* ========================================
@@ -278,6 +449,93 @@ body {
    Responsive Styles
    ======================================== */
 
+/* ========================================
+   Dark Mode Styles
+   ======================================== */
+
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+}
+
+body.dark-mode::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(206, 50, 50, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(206, 50, 50, 0.08) 0%, transparent 50%);
+}
+
+body.dark-mode .section-header h2 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .dish-card {
+    background: rgba(40, 40, 40, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .dish-card:hover {
+    box-shadow: 0 12px 40px rgba(206, 50, 50, 0.3), 0 0 0 1px rgba(206, 50, 50, 0.2);
+}
+
+body.dark-mode .dish-info {
+    background: linear-gradient(to bottom, rgba(40, 40, 40, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+}
+
+body.dark-mode .dish-name {
+    color: #f0f0f0;
+}
+
+body.dark-mode .dish-description {
+    color: #b0b0b0;
+}
+
+body.dark-mode .dish-price {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+    color: #ff6b6b;
+}
+
+body.dark-mode .dish-card:hover .dish-price {
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+    color: #ce3232;
+}
+
+body.dark-mode .tab-button {
+    background: rgba(40, 40, 40, 0.95);
+    border-color: #ce3232;
+    color: #f0f0f0;
+}
+
+body.dark-mode .tab-button:hover {
+    background: #ce3232;
+    color: white;
+}
+
+body.dark-mode .tab-button.active {
+    background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
+    color: white;
+}
+
+body.dark-mode .menu-tabs {
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .menu-tabs.sticky {
+    background: rgba(30, 30, 30, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .theme-toggle {
+    background: rgba(206, 50, 50, 0.2);
+    border-color: #ce3232;
+    color: #ff6b6b;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: #ce3232;
+    color: white;
+}
+
 @media screen and (max-width: 768px) {
     .menu-header h1 {
         font-size: 2em;
@@ -288,36 +546,71 @@ body {
     }
 
     .menu-tabs {
+        padding: 12px 10px;
+        gap: 10px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .tabs-wrapper {
         justify-content: flex-start;
         overflow-x: auto;
-        padding-bottom: 10px;
+        overflow-y: hidden;
+        flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        max-width: calc(100% - 55px);
+    }
+
+    .tabs-wrapper::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+
+    .menu-tabs.sticky {
+        padding: 10px 8px;
+    }
+
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1em;
+        margin-left: 5px;
+    }
+
+    .menu-tabs.sticky + .menu-content {
+        padding-top: 75px;
     }
 
     .tab-button {
         font-size: 0.85em;
-        padding: 10px 18px;
+        padding: 10px 16px;
+        flex-shrink: 0;
+        white-space: nowrap;
     }
 
     .dishes-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 20px;
     }
 
-    .dish-card {
-        padding: 15px;
+    .dish-image {
+        height: 220px;
+    }
+
+    .dish-info {
+        padding: 18px;
     }
 
     .dish-name {
-        font-size: 1.1em;
+        font-size: 1.15em;
     }
 
     .dish-price {
-        font-size: 1.2em;
+        font-size: 1.25em;
     }
 
     .section-header h2 {
-        font-size: 1.6em;
+        font-size: 1.8em;
     }
 }
 
@@ -334,27 +627,53 @@ body {
         font-size: 1.8em;
     }
 
+    .menu-tabs {
+        padding: 10px 8px;
+        gap: 8px;
+    }
+
+    .tabs-wrapper {
+        gap: 6px;
+        max-width: calc(100% - 48px);
+    }
+
     .tab-button {
         font-size: 0.75em;
-        padding: 8px 15px;
+        padding: 8px 12px;
     }
 
-    .search-input {
-        padding: 12px 12px 12px 40px;
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
         font-size: 0.9em;
+        margin-left: 3px;
     }
 
-    .dish-card {
-        flex-direction: column;
+    .menu-tabs.sticky {
+        padding: 8px 6px;
+    }
+
+    .menu-tabs.sticky + .menu-content {
+        padding-top: 65px;
+    }
+
+    .dish-image {
+        height: 180px;
+    }
+
+    .dish-info {
+        padding: 12px;
+    }
+
+    .dish-info {
+        padding: 16px;
     }
 
     .dish-price {
-        border-left: none;
-        border-top: 2px solid #eee;
-        padding-left: 0;
-        padding-top: 10px;
-        margin-top: 10px;
-        width: 100%;
+        padding: 12px 16px;
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-bottom: -16px;
     }
 }
 
