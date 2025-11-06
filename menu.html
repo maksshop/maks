@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/menu.css">
@@ -30,35 +30,34 @@
         </header>
 
         <!-- Menu Filter Tabs -->
-        <nav class="menu-tabs">
-            <button class="tab-button active" data-category="all">
-                <i class="fas fa-utensils"></i> Всичко
-            </button>
-            <button class="tab-button" data-category="salads">
-                <i class="fas fa-leaf"></i> Салати
-            </button>
-            <button class="tab-button" data-category="soups">
-                <i class="fas fa-bowl-food"></i> Супи
-            </button>
-            <button class="tab-button" data-category="appetizers">
-                <i class="fas fa-cheese"></i> Предястия
-            </button>
-            <button class="tab-button" data-category="main">
-                <i class="fas fa-drumstick-bite"></i> Главни Ястия
-            </button>
-            <button class="tab-button" data-category="desserts">
-                <i class="fas fa-ice-cream"></i> Десерти
-            </button>
-            <button class="tab-button" data-category="drinks">
-                <i class="fas fa-glass-water"></i> Напитки
+        <nav class="menu-tabs" id="menuTabs">
+            <div class="tabs-wrapper">
+                <button class="tab-button active" data-category="all">
+                    <i class="fas fa-utensils"></i> Всичко
+                </button>
+                <button class="tab-button" data-category="salads">
+                    <i class="fas fa-leaf"></i> Салати
+                </button>
+                <button class="tab-button" data-category="soups">
+                    <i class="fas fa-bowl-food"></i> Супи
+                </button>
+                <button class="tab-button" data-category="appetizers">
+                    <i class="fas fa-cheese"></i> Предястия
+                </button>
+                <button class="tab-button" data-category="main">
+                    <i class="fas fa-drumstick-bite"></i> Главни Ястия
+                </button>
+                <button class="tab-button" data-category="desserts">
+                    <i class="fas fa-ice-cream"></i> Десерти
+                </button>
+                <button class="tab-button" data-category="drinks">
+                    <i class="fas fa-glass-water"></i> Напитки
+                </button>
+            </div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <i class="fas fa-moon"></i>
             </button>
         </nav>
-
-        <!-- Search Bar -->
-        <div class="search-container">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Търсене на ястие..." class="search-input">
-        </div>
 
         <!-- Menu Content -->
         <main class="menu-content">
@@ -70,6 +69,9 @@
                 </div>
                 <div class="dishes-grid">
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/salads-shopska-salata.jpg" alt="Шопска салата" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Шопска салата</h3>
                             <p class="dish-description">Домати, краставици, лук, сирене</p>
@@ -77,6 +79,9 @@
                         <div class="dish-price">6.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/salads-cezar-salata.jpg" alt="Салата Цезар" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Салата Цезар</h3>
                             <p class="dish-description">Маруля, готварско месо, пармезан, цезар сос</p>
@@ -84,6 +89,9 @@
                         <div class="dish-price">9.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/salads-zelena-salata.jpg" alt="Зелена салата" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Зелена салата</h3>
                             <p class="dish-description">Свежа маруля, репички, червени домати</p>
@@ -91,6 +99,9 @@
                         <div class="dish-price">5.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/salads-salata-riba-ton.jpg" alt="Салата с риба тон" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Салата с риба тон</h3>
                             <p class="dish-description">Риба тон, маруля, яйца, майонеза</p>
@@ -98,6 +109,9 @@
                         <div class="dish-price">8.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/salads-ovcharska-salata.jpg" alt="Овчарска салата" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Овчарска салата</h3>
                             <p class="dish-description">Печени чушки, домати, сирене, лук</p>
@@ -105,6 +119,9 @@
                         <div class="dish-price">7.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/salads-ruska-salata.jpg" alt="Руска салата" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Руска салата</h3>
                             <p class="dish-description">Картофи, яйца, моркови, майонеза</p>
@@ -122,6 +139,9 @@
                 </div>
                 <div class="dishes-grid">
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/soups-tarator.jpg" alt="Таратор" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Таратор</h3>
                             <p class="dish-description">Кисело мляко, краставици, чесън, орехи</p>
@@ -129,6 +149,9 @@
                         <div class="dish-price">4.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/soups-chorba-balgarska.jpg" alt="Чорба по български" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Чорба по български</h3>
                             <p class="dish-description">Месо, домати, чушки, лук</p>
@@ -136,6 +159,9 @@
                         <div class="dish-price">6.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/soups-pileshka-supa.jpg" alt="Пилешка супа" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Пилешка супа</h3>
                             <p class="dish-description">Пилешко месо, нудли, яйце</p>
@@ -143,6 +169,9 @@
                         <div class="dish-price">5.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/soups-bob-chorba.jpg" alt="Боб чорба" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Боб чорба</h3>
                             <p class="dish-description">Боб, месо, чушки, домати</p>
@@ -150,6 +179,9 @@
                         <div class="dish-price">5.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/soups-supa-gabi.jpg" alt="Супа от гъби" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Супа от гъби</h3>
                             <p class="dish-description">Свежи гъби, сметана, лук</p>
@@ -157,6 +189,9 @@
                         <div class="dish-price">6.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/soups-ribeshka-chorba.jpg" alt="Рибешка чорба" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Рибешка чорба</h3>
                             <p class="dish-description">Свежа риба, домати, моркови</p>
@@ -174,6 +209,9 @@
                 </div>
                 <div class="dishes-grid">
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/appetizers-balgarska-sarma.jpg" alt="Българска сарма" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Българска сарма</h3>
                             <p class="dish-description">Зелеви листа, месо, ориз</p>
@@ -181,6 +219,9 @@
                         <div class="dish-price">7.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/appetizers-kyufreta.jpg" alt="Кюфтета" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Кюфтета</h3>
                             <p class="dish-description">Месо, лук, билки</p>
@@ -188,6 +229,9 @@
                         <div class="dish-price">8.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/appetizers-kashkaval-pane.jpg" alt="Кашкавал пане" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Кашкавал пане</h3>
                             <p class="dish-description">Кашкавал, галета, яйце</p>
@@ -195,6 +239,9 @@
                         <div class="dish-price">8.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/appetizers-sirene-shipski.jpg" alt="Сирене по шипски" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Сирене по шипски</h3>
                             <p class="dish-description">Сирене, яйце, брашно</p>
@@ -202,6 +249,9 @@
                         <div class="dish-price">7.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/appetizers-melena-skara.jpg" alt="Мелена скара" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Мелена скара</h3>
                             <p class="dish-description">Месо, лук, билки</p>
@@ -209,6 +259,9 @@
                         <div class="dish-price">9.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/appetizers-kartofki-skara.jpg" alt="Картофки на скара" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Картофки на скара</h3>
                             <p class="dish-description">Печени картофи с билкови масло</p>
@@ -226,6 +279,9 @@
                 </div>
                 <div class="dishes-grid">
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/main-pileshko-file-skara.jpg" alt="Пилешко филе на скара" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Пилешко филе на скара</h3>
                             <p class="dish-description">Пилешко филе, картофи, салата</p>
@@ -233,6 +289,9 @@
                         <div class="dish-price">14.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/main-svinsko-file-skara.jpg" alt="Свинско филе на скара" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Свинско филе на скара</h3>
                             <p class="dish-description">Свинско филе, картофи, салата</p>
@@ -240,6 +299,9 @@
                         <div class="dish-price">16.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/main-teleshko-meso-kartofi.jpg" alt="Телешко месо с картофи" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Телешко месо с картофи</h3>
                             <p class="dish-description">Телешко месо, печени картофи</p>
@@ -247,6 +309,9 @@
                         <div class="dish-price">18.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/main-riba-skara.jpg" alt="Риба на скара" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Риба на скара</h3>
                             <p class="dish-description">Свежа риба, картофи, салата</p>
@@ -254,6 +319,9 @@
                         <div class="dish-price">17.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/main-kyufte-kartofi.jpg" alt="Кюфте с картофи" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Кюфте с картофи</h3>
                             <p class="dish-description">Месо, картофи, сос</p>
@@ -261,6 +329,9 @@
                         <div class="dish-price">12.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/main-pileshka-parzhola.jpg" alt="Пилешка пържола" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Пилешка пържола</h3>
                             <p class="dish-description">Пилешко месо, картофи, салата</p>
@@ -268,6 +339,9 @@
                         <div class="dish-price">13.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/main-svinska-parzhola.jpg" alt="Свинска пържола" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Свинска пържола</h3>
                             <p class="dish-description">Свинско месо, картофи, салата</p>
@@ -275,6 +349,9 @@
                         <div class="dish-price">15.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/main-kashkaval-skara.jpg" alt="Кашкавал на скара" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Кашкавал на скара</h3>
                             <p class="dish-description">Кашкавал, печени картофи</p>
@@ -292,6 +369,9 @@
                 </div>
                 <div class="dishes-grid">
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/desserts-baklava.jpg" alt="Баклава" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Баклава</h3>
                             <p class="dish-description">Сладко тесто с орехи</p>
@@ -299,6 +379,9 @@
                         <div class="dish-price">5.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/desserts-mlechen-led.jpg" alt="Млечен лед" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Млечен лед</h3>
                             <p class="dish-description">Домашен млечен лед</p>
@@ -306,6 +389,9 @@
                         <div class="dish-price">4.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/desserts-garash.jpg" alt="Гараш" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Гараш</h3>
                             <p class="dish-description">Сладко торта с орехи</p>
@@ -313,6 +399,9 @@
                         <div class="dish-price">6.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/desserts-shokoladov-sufle.jpg" alt="Шоколадов суфле" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Шоколадов суфле</h3>
                             <p class="dish-description">Топъл шоколад с сладолед</p>
@@ -320,6 +409,9 @@
                         <div class="dish-price">7.90 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/desserts-palachinki.jpg" alt="Палачинки" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Палачинки</h3>
                             <p class="dish-description">С конфитюр или шоколад</p>
@@ -327,6 +419,9 @@
                         <div class="dish-price">5.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/desserts-fruktova-salata.jpg" alt="Фруктова салата" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Фруктова салата</h3>
                             <p class="dish-description">Свежи сезонни плодове</p>
@@ -344,6 +439,9 @@
                 </div>
                 <div class="dishes-grid">
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/drinks-kafe.jpg" alt="Кафе" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Кафе</h3>
                             <p class="dish-description">Еспресо, капучино, лате</p>
@@ -351,6 +449,9 @@
                         <div class="dish-price">от 2.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/drinks-chay.jpg" alt="Чай" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Чай</h3>
                             <p class="dish-description">Различни видове</p>
@@ -358,6 +459,9 @@
                         <div class="dish-price">2.00 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/drinks-sokove.jpg" alt="Сокове" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Сокове</h3>
                             <p class="dish-description">Различни вкусове</p>
@@ -365,6 +469,9 @@
                         <div class="dish-price">3.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/drinks-bira.jpg" alt="Бира" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Бира</h3>
                             <p class="dish-description">Лек/Тъмен (0.5л)</p>
@@ -372,6 +479,9 @@
                         <div class="dish-price">4.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/drinks-vina.jpg" alt="Вина" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Вина</h3>
                             <p class="dish-description">Червено/Бяло (150мл)</p>
@@ -379,6 +489,9 @@
                         <div class="dish-price">от 4.50 лв</div>
                     </div>
                     <div class="dish-card">
+                        <div class="dish-image">
+                            <img src="images/menu/drinks-bezalkoholni-napitki.jpg" alt="Безалкохолни напитки" loading="lazy" width="400" height="300">
+                        </div>
                         <div class="dish-info">
                             <h3 class="dish-name">Безалкохолни напитки</h3>
                             <p class="dish-description">Кола, Фанта, Спрайт</p>
