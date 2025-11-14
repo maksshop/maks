@@ -594,7 +594,13 @@ body.dark-mode .theme-toggle:hover {
     }
 
     .menu-tabs.sticky {
-        padding: 10px 8px;
+        padding: 8px 6px;
+        gap: 6px;
+    }
+
+    .menu-tabs.sticky .tabs-wrapper {
+        gap: 6px;
+        padding: 2px 0;
     }
 
     .theme-toggle {
@@ -611,8 +617,17 @@ body.dark-mode .theme-toggle:hover {
         touch-action: manipulation;
     }
 
+    .menu-tabs.sticky .theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9em;
+        margin: 2px 0 0 0;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
     .menu-tabs.sticky + .menu-content {
-        padding-top: 120px; /* Adjusted for smaller toggle */
+        padding-top: 100px; /* Adjusted for smaller sticky menu */
     }
 
     .tab-button {
@@ -631,6 +646,12 @@ body.dark-mode .theme-toggle:hover {
         user-select: none;
         -webkit-user-select: none;
     }
+
+    .menu-tabs.sticky .tab-button {
+        font-size: 0.7em;
+        padding: 6px 10px;
+        min-height: 36px;
+    }
     
     .tab-button i {
         /* Make icons more visible on mobile */
@@ -638,25 +659,38 @@ body.dark-mode .theme-toggle:hover {
         margin-right: 5px;
     }
 
+    .menu-tabs.sticky .tab-button i {
+        font-size: 0.85em;
+        margin-right: 4px;
+    }
+
     .dishes-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .dish-image {
-        height: 220px;
+        height: 180px;
     }
 
     .dish-info {
-        padding: 18px;
+        padding: 12px;
     }
 
     .dish-name {
-        font-size: 1.15em;
+        font-size: 1em;
+    }
+
+    .dish-description {
+        font-size: 0.85em;
     }
 
     .dish-price {
-        font-size: 1.25em;
+        font-size: 1.1em;
+        padding: 10px 12px;
+        margin-left: -12px;
+        margin-right: -12px;
+        margin-bottom: -12px;
     }
 
     .section-header h2 {
@@ -699,10 +733,21 @@ body.dark-mode .theme-toggle:hover {
         justify-content: center;
         flex: 0 1 auto; /* Allow buttons to fit naturally */
     }
+
+    .menu-tabs.sticky .tab-button {
+        font-size: 0.65em;
+        padding: 5px 8px;
+        min-height: 32px;
+    }
     
     .tab-button i {
         font-size: 0.95em;
         margin-right: 4px;
+    }
+
+    .menu-tabs.sticky .tab-button i {
+        font-size: 0.8em;
+        margin-right: 3px;
     }
 
     .theme-toggle {
@@ -716,30 +761,55 @@ body.dark-mode .theme-toggle:hover {
     }
 
     .menu-tabs.sticky {
-        padding: 8px 6px;
+        padding: 6px 4px;
+        gap: 4px;
+    }
+
+    .menu-tabs.sticky .tabs-wrapper {
+        gap: 4px;
+        padding: 2px 0;
+    }
+
+    .menu-tabs.sticky .theme-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85em;
+        margin: 2px 0 0 0;
+        min-width: 32px;
+        min-height: 32px;
     }
 
     .menu-tabs.sticky + .menu-content {
-        padding-top: 130px; /* Adjusted for smaller toggle */
+        padding-top: 90px; /* Adjusted for smaller sticky menu */
+    }
+
+    .dishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 
     .dish-image {
-        height: 180px;
+        height: 160px;
     }
 
     .dish-info {
-        padding: 12px;
+        padding: 10px;
     }
 
-    .dish-info {
-        padding: 16px;
+    .dish-name {
+        font-size: 0.95em;
+    }
+
+    .dish-description {
+        font-size: 0.8em;
     }
 
     .dish-price {
-        padding: 12px 16px;
-        margin-left: -16px;
-        margin-right: -16px;
-        margin-bottom: -16px;
+        font-size: 1em;
+        padding: 8px 10px;
+        margin-left: -10px;
+        margin-right: -10px;
+        margin-bottom: -10px;
     }
 }
 
