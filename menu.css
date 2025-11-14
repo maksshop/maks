@@ -1,0 +1,929 @@
+/* ========================================
+   Menu Page Styles
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(206, 50, 50, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(206, 50, 50, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   Header Styles
+   ======================================== */
+
+.menu-header {
+    background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 40px rgba(206, 50, 50, 0.4);
+    position: relative;
+    overflow: visible;
+}
+
+.menu-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: headerShine 8s infinite;
+}
+
+@keyframes headerShine {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20%, -20%); }
+}
+
+.menu-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5em;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.restaurant-name {
+    font-size: 1.5em;
+    font-weight: 300;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 2px;
+}
+
+/* ========================================
+   Theme Toggle Button
+   ======================================== */
+
+.theme-toggle {
+    background: rgba(206, 50, 50, 0.1);
+    border: 2px solid #ce3232;
+    color: #ce3232;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    background: #ce3232;
+    color: white;
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 4px 15px rgba(206, 50, 50, 0.3);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95) rotate(15deg);
+}
+
+/* ========================================
+   Filter Tabs Styles
+   ======================================== */
+
+.menu-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tabs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.menu-tabs.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.menu-tabs.sticky + .menu-content {
+    padding-top: 100px;
+}
+
+.tab-button {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #ce3232;
+    color: #ce3232;
+    padding: 14px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    /* Better touch responsiveness */
+    -webkit-tap-highlight-color: rgba(206, 50, 50, 0.2);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.tab-button i {
+    font-size: 1.1em;
+}
+
+.tab-button:hover {
+    background: #ce3232;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(206, 50, 50, 0.4);
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(206, 50, 50, 0.5);
+    border-color: #ce3232;
+}
+
+.tab-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 4px rgba(206, 50, 50, 0.3);
+    background: rgba(206, 50, 50, 0.1);
+}
+
+/* Mobile-specific active state for better feedback */
+@media (hover: none) and (pointer: coarse) {
+    .tab-button:active {
+        background: rgba(206, 50, 50, 0.15);
+        border-color: #ce3232;
+    }
+    
+    .tab-button.active:active {
+        background: linear-gradient(135deg, #a02828 0%, #8a2222 100%);
+    }
+    
+    .theme-toggle:active {
+        background: rgba(206, 50, 50, 0.3);
+        transform: scale(0.9);
+    }
+}
+
+
+/* ========================================
+   Menu Content Styles
+   ======================================== */
+
+.menu-content {
+    margin-bottom: 40px;
+}
+
+.menu-section {
+    margin-bottom: 50px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.menu-section.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-header {
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    color: #2c2c2c;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    text-shadow: none;
+}
+
+.section-header h2 i {
+    font-size: 0.9em;
+}
+
+.section-line {
+    height: 4px;
+    width: 100px;
+    background: linear-gradient(to right, #ce3232, #ff6b6b, transparent);
+    margin-top: 5px;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(206, 50, 50, 0.3);
+}
+
+/* ========================================
+   Dishes Grid Styles
+   ======================================== */
+
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.dish-card {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border-top: 5px solid #ce3232;
+    position: relative;
+}
+
+.dish-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(206, 50, 50, 0.3), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.dish-card:hover::after {
+    opacity: 1;
+}
+
+.dish-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(206, 50, 50, 0.25), 0 0 0 1px rgba(206, 50, 50, 0.1);
+    border-top-width: 5px;
+}
+
+.dish-card:hover .dish-image img {
+    transform: scale(1.08);
+}
+
+.dish-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    position: relative;
+}
+
+.dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    filter: brightness(1.05) contrast(1.05);
+}
+
+.dish-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.15) 100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.dish-card:hover .dish-image::after {
+    background: linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(206, 50, 50, 0.1) 100%);
+}
+
+.dish-info {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #ffffff 0%, #fafafa 100%);
+}
+
+.dish-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35em;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+}
+
+.dish-description {
+    font-size: 0.95em;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.dish-price {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #ce3232;
+    margin-top: auto;
+    padding: 16px 24px;
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-bottom: -24px;
+    border-top: 2px solid rgba(206, 50, 50, 0.1);
+    text-align: center;
+    background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(206, 50, 50, 0.1);
+    transition: all 0.3s ease;
+}
+
+.dish-card:hover .dish-price {
+    background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
+    color: #b02828;
+}
+
+/* ========================================
+   Footer Styles
+   ======================================== */
+
+.menu-footer {
+    background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
+    color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 60px;
+    box-shadow: 0 4px 20px rgba(206, 50, 50, 0.3);
+    border-top: 3px solid #fff;
+}
+
+.menu-footer p {
+    margin: 0;
+    font-size: 0.95em;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   No Results Message
+   ======================================== */
+
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 1.2em;
+}
+
+.no-results i {
+    font-size: 3em;
+    margin-bottom: 20px;
+    display: block;
+    color: #ddd;
+}
+
+/* ========================================
+   Responsive Styles
+   ======================================== */
+
+/* ========================================
+   Dark Mode Styles
+   ======================================== */
+
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+}
+
+body.dark-mode::before {
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(206, 50, 50, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(206, 50, 50, 0.08) 0%, transparent 50%);
+}
+
+body.dark-mode .section-header h2 {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .dish-card {
+    background: rgba(40, 40, 40, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .dish-card:hover {
+    box-shadow: 0 12px 40px rgba(206, 50, 50, 0.3), 0 0 0 1px rgba(206, 50, 50, 0.2);
+}
+
+body.dark-mode .dish-info {
+    background: linear-gradient(to bottom, rgba(40, 40, 40, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+}
+
+body.dark-mode .dish-name {
+    color: #f0f0f0;
+}
+
+body.dark-mode .dish-description {
+    color: #b0b0b0;
+}
+
+body.dark-mode .dish-price {
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+    color: #ff6b6b;
+}
+
+body.dark-mode .dish-card:hover .dish-price {
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
+    color: #ce3232;
+}
+
+body.dark-mode .tab-button {
+    background: rgba(40, 40, 40, 0.95);
+    border-color: #ce3232;
+    color: #f0f0f0;
+}
+
+body.dark-mode .tab-button:hover {
+    background: #ce3232;
+    color: white;
+}
+
+body.dark-mode .tab-button.active {
+    background: linear-gradient(135deg, #ce3232 0%, #a02828 100%);
+    color: white;
+}
+
+body.dark-mode .menu-tabs {
+    background: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .menu-tabs.sticky {
+    background: rgba(30, 30, 30, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .theme-toggle {
+    background: rgba(206, 50, 50, 0.2);
+    border-color: #ce3232;
+    color: #ff6b6b;
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: #ce3232;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .menu-header h1 {
+        font-size: 2em;
+    }
+
+    .restaurant-name {
+        font-size: 1.1em;
+    }
+
+    .menu-tabs {
+        padding: 15px 10px 10px 10px;
+        gap: 8px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tabs-wrapper {
+        justify-content: center;
+        overflow-x: visible;
+        overflow-y: visible;
+        flex-wrap: wrap; /* Allow buttons to wrap to multiple rows */
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .tabs-wrapper::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+
+    .menu-tabs.sticky {
+        padding: 10px 8px;
+    }
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+        /* Center the toggle button */
+        align-self: center;
+        margin: 5px 0 0 0;
+        /* Better touch target */
+        min-width: 40px;
+        min-height: 40px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .menu-tabs.sticky + .menu-content {
+        padding-top: 120px; /* Adjusted for smaller toggle */
+    }
+
+    .tab-button {
+        font-size: 0.8em;
+        padding: 10px 14px;
+        flex-shrink: 1; /* Allow buttons to shrink if needed */
+        white-space: nowrap;
+        /* Better touch target - minimum 44x44px */
+        min-height: 44px;
+        min-width: fit-content;
+        /* Remove tap highlight on mobile */
+        -webkit-tap-highlight-color: transparent;
+        /* Improve touch responsiveness */
+        touch-action: manipulation;
+        /* Prevent text selection on tap */
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    
+    .tab-button i {
+        /* Make icons more visible on mobile */
+        font-size: 1em;
+        margin-right: 5px;
+    }
+
+    .dishes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .dish-image {
+        height: 220px;
+    }
+
+    .dish-info {
+        padding: 18px;
+    }
+
+    .dish-name {
+        font-size: 1.15em;
+    }
+
+    .dish-price {
+        font-size: 1.25em;
+    }
+
+    .section-header h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .menu-container {
+        padding: 10px;
+    }
+
+    .menu-header {
+        padding: 30px 15px;
+    }
+
+    .menu-header h1 {
+        font-size: 1.8em;
+    }
+
+    .menu-tabs {
+        padding: 12px 8px 8px 8px;
+        gap: 8px;
+    }
+
+    .tabs-wrapper {
+        gap: 6px;
+        /* Full width for all buttons */
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tab-button {
+        font-size: 0.75em;
+        padding: 8px 12px;
+        /* Ensure minimum touch target size */
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 1 auto; /* Allow buttons to fit naturally */
+    }
+    
+    .tab-button i {
+        font-size: 0.95em;
+        margin-right: 4px;
+    }
+
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9em;
+        margin: 3px 0 0 0;
+        /* Better touch target */
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .menu-tabs.sticky {
+        padding: 8px 6px;
+    }
+
+    .menu-tabs.sticky + .menu-content {
+        padding-top: 130px; /* Adjusted for smaller toggle */
+    }
+
+    .dish-image {
+        height: 180px;
+    }
+
+    .dish-info {
+        padding: 12px;
+    }
+
+    .dish-info {
+        padding: 16px;
+    }
+
+    .dish-price {
+        padding: 12px 16px;
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-bottom: -16px;
+    }
+}
+
+/* ========================================
+   Drinks Section Styles
+   ======================================== */
+
+.drinks-subsection {
+    margin-bottom: 35px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ce3232;
+}
+
+.drinks-subsection h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
+    color: #ce3232;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.drinks-subsection h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    color: #2c2c2c;
+    margin: 25px 0 15px 0;
+    font-weight: 600;
+    padding-top: 15px;
+    border-top: 2px solid rgba(206, 50, 50, 0.2);
+}
+
+.drinks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.drink-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+    padding: 12px 15px;
+    background: rgba(248, 248, 248, 0.8);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.drink-item:hover {
+    background: rgba(255, 255, 255, 1);
+    border-left-color: #ce3232;
+    transform: translateX(5px);
+    box-shadow: 0 2px 10px rgba(206, 50, 50, 0.15);
+}
+
+.drink-name {
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+}
+
+.drink-size {
+    color: #666;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.drink-price {
+    color: #ce3232;
+    font-weight: 700;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    letter-spacing: 0.5px;
+}
+
+/* Dark Mode Styles for Drinks */
+body.dark-mode .drinks-subsection {
+    background: rgba(40, 40, 40, 0.95);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .drinks-subsection h3 {
+    color: #ff6b6b;
+}
+
+body.dark-mode .drinks-subsection h4 {
+    color: #f0f0f0;
+    border-top-color: rgba(206, 50, 50, 0.3);
+}
+
+body.dark-mode .drink-item {
+    background: rgba(30, 30, 30, 0.8);
+}
+
+body.dark-mode .drink-item:hover {
+    background: rgba(40, 40, 40, 1);
+}
+
+body.dark-mode .drink-name {
+    color: #f0f0f0;
+}
+
+body.dark-mode .drink-size {
+    color: #b0b0b0;
+}
+
+body.dark-mode .drink-price {
+    color: #ff6b6b;
+}
+
+/* Responsive Styles for Drinks */
+@media screen and (max-width: 768px) {
+    .drink-item {
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .drink-name {
+        font-size: 0.85em;
+    }
+
+    .drink-size {
+        font-size: 0.8em;
+    }
+
+    .drink-price {
+        font-size: 0.9em;
+    }
+
+    .drinks-subsection {
+        padding: 18px;
+    }
+
+    .drinks-subsection h3 {
+        font-size: 1.4em;
+    }
+
+    .drinks-subsection h4 {
+        font-size: 1.15em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .drink-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .drink-name,
+    .drink-size,
+    .drink-price {
+        justify-content: center;
+    }
+
+    .drink-name {
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    .drink-size {
+        font-size: 0.85em;
+        color: #999;
+    }
+
+    .drink-price {
+        font-size: 1em;
+        margin-top: 5px;
+    }
+
+    .drinks-subsection {
+        padding: 15px;
+    }
+}
+
