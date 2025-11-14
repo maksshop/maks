@@ -192,6 +192,11 @@ body::before {
     white-space: nowrap;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
+    /* Better touch responsiveness */
+    -webkit-tap-highlight-color: rgba(206, 50, 50, 0.2);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .tab-button i {
@@ -210,6 +215,29 @@ body::before {
     color: white;
     box-shadow: 0 4px 15px rgba(206, 50, 50, 0.5);
     border-color: #ce3232;
+}
+
+.tab-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 4px rgba(206, 50, 50, 0.3);
+    background: rgba(206, 50, 50, 0.1);
+}
+
+/* Mobile-specific active state for better feedback */
+@media (hover: none) and (pointer: coarse) {
+    .tab-button:active {
+        background: rgba(206, 50, 50, 0.15);
+        border-color: #ce3232;
+    }
+    
+    .tab-button.active:active {
+        background: linear-gradient(135deg, #a02828 0%, #8a2222 100%);
+    }
+    
+    .theme-toggle:active {
+        background: rgba(206, 50, 50, 0.3);
+        transform: scale(0.9);
+    }
 }
 
 
@@ -546,20 +574,19 @@ body.dark-mode .theme-toggle:hover {
     }
 
     .menu-tabs {
-        padding: 12px 10px;
-        gap: 10px;
-        flex-direction: row;
-        flex-wrap: nowrap;
+        padding: 15px 10px 10px 10px;
+        gap: 8px;
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .tabs-wrapper {
-        justify-content: flex-start;
-        overflow-x: auto;
-        overflow-y: hidden;
-        flex-wrap: nowrap;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-        max-width: calc(100% - 55px);
+        justify-content: center;
+        overflow-x: visible;
+        overflow-y: visible;
+        flex-wrap: wrap; /* Allow buttons to wrap to multiple rows */
+        width: 100%;
+        padding: 5px 0;
     }
 
     .tabs-wrapper::-webkit-scrollbar {
@@ -571,21 +598,44 @@ body.dark-mode .theme-toggle:hover {
     }
 
     .theme-toggle {
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         font-size: 1em;
-        margin-left: 5px;
+        /* Center the toggle button */
+        align-self: center;
+        margin: 5px 0 0 0;
+        /* Better touch target */
+        min-width: 40px;
+        min-height: 40px;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
 
     .menu-tabs.sticky + .menu-content {
-        padding-top: 75px;
+        padding-top: 120px; /* Adjusted for smaller toggle */
     }
 
     .tab-button {
-        font-size: 0.85em;
-        padding: 10px 16px;
-        flex-shrink: 0;
+        font-size: 0.8em;
+        padding: 10px 14px;
+        flex-shrink: 1; /* Allow buttons to shrink if needed */
         white-space: nowrap;
+        /* Better touch target - minimum 44x44px */
+        min-height: 44px;
+        min-width: fit-content;
+        /* Remove tap highlight on mobile */
+        -webkit-tap-highlight-color: transparent;
+        /* Improve touch responsiveness */
+        touch-action: manipulation;
+        /* Prevent text selection on tap */
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    
+    .tab-button i {
+        /* Make icons more visible on mobile */
+        font-size: 1em;
+        margin-right: 5px;
     }
 
     .dishes-grid {
@@ -628,25 +678,41 @@ body.dark-mode .theme-toggle:hover {
     }
 
     .menu-tabs {
-        padding: 10px 8px;
+        padding: 12px 8px 8px 8px;
         gap: 8px;
     }
 
     .tabs-wrapper {
         gap: 6px;
-        max-width: calc(100% - 48px);
+        /* Full width for all buttons */
+        width: 100%;
+        justify-content: center;
     }
 
     .tab-button {
         font-size: 0.75em;
         padding: 8px 12px;
+        /* Ensure minimum touch target size */
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 1 auto; /* Allow buttons to fit naturally */
+    }
+    
+    .tab-button i {
+        font-size: 0.95em;
+        margin-right: 4px;
     }
 
     .theme-toggle {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
         font-size: 0.9em;
-        margin-left: 3px;
+        margin: 3px 0 0 0;
+        /* Better touch target */
+        min-width: 36px;
+        min-height: 36px;
     }
 
     .menu-tabs.sticky {
@@ -654,7 +720,7 @@ body.dark-mode .theme-toggle:hover {
     }
 
     .menu-tabs.sticky + .menu-content {
-        padding-top: 65px;
+        padding-top: 130px; /* Adjusted for smaller toggle */
     }
 
     .dish-image {
@@ -674,6 +740,190 @@ body.dark-mode .theme-toggle:hover {
         margin-left: -16px;
         margin-right: -16px;
         margin-bottom: -16px;
+    }
+}
+
+/* ========================================
+   Drinks Section Styles
+   ======================================== */
+
+.drinks-subsection {
+    margin-bottom: 35px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ce3232;
+}
+
+.drinks-subsection h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6em;
+    color: #ce3232;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.drinks-subsection h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    color: #2c2c2c;
+    margin: 25px 0 15px 0;
+    font-weight: 600;
+    padding-top: 15px;
+    border-top: 2px solid rgba(206, 50, 50, 0.2);
+}
+
+.drinks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.drink-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+    padding: 12px 15px;
+    background: rgba(248, 248, 248, 0.8);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.drink-item:hover {
+    background: rgba(255, 255, 255, 1);
+    border-left-color: #ce3232;
+    transform: translateX(5px);
+    box-shadow: 0 2px 10px rgba(206, 50, 50, 0.15);
+}
+
+.drink-name {
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+}
+
+.drink-size {
+    color: #666;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.drink-price {
+    color: #ce3232;
+    font-weight: 700;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    letter-spacing: 0.5px;
+}
+
+/* Dark Mode Styles for Drinks */
+body.dark-mode .drinks-subsection {
+    background: rgba(40, 40, 40, 0.95);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .drinks-subsection h3 {
+    color: #ff6b6b;
+}
+
+body.dark-mode .drinks-subsection h4 {
+    color: #f0f0f0;
+    border-top-color: rgba(206, 50, 50, 0.3);
+}
+
+body.dark-mode .drink-item {
+    background: rgba(30, 30, 30, 0.8);
+}
+
+body.dark-mode .drink-item:hover {
+    background: rgba(40, 40, 40, 1);
+}
+
+body.dark-mode .drink-name {
+    color: #f0f0f0;
+}
+
+body.dark-mode .drink-size {
+    color: #b0b0b0;
+}
+
+body.dark-mode .drink-price {
+    color: #ff6b6b;
+}
+
+/* Responsive Styles for Drinks */
+@media screen and (max-width: 768px) {
+    .drink-item {
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .drink-name {
+        font-size: 0.85em;
+    }
+
+    .drink-size {
+        font-size: 0.8em;
+    }
+
+    .drink-price {
+        font-size: 0.9em;
+    }
+
+    .drinks-subsection {
+        padding: 18px;
+    }
+
+    .drinks-subsection h3 {
+        font-size: 1.4em;
+    }
+
+    .drinks-subsection h4 {
+        font-size: 1.15em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .drink-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .drink-name,
+    .drink-size,
+    .drink-price {
+        justify-content: center;
+    }
+
+    .drink-name {
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    .drink-size {
+        font-size: 0.85em;
+        color: #999;
+    }
+
+    .drink-price {
+        font-size: 1em;
+        margin-top: 5px;
+    }
+
+    .drinks-subsection {
+        padding: 15px;
     }
 }
 
